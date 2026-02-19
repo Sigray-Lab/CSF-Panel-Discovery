@@ -1,0 +1,101 @@
+file,column,type,description
+# ──────────────────────────────────────────────────────────────────────
+# candidates_ranked.tsv — All 9561 scored proteins ranked by composite score
+# ──────────────────────────────────────────────────────────────────────
+candidates_ranked.tsv,rank,int,"Rank by composite_score across all 9561 proteins (0 = highest). Gaps appear in the shortlist because non-qualifying proteins occupy intervening ranks."
+candidates_ranked.tsv,human_gene_symbol,str,"Human gene symbol. For mouse datasets this is the ortholog mapped via g:Profiler g:Orth; for human datasets it is the original gene symbol."
+candidates_ranked.tsv,composite_score,float,"Weighted evidence score clamped to [0, 1]. Formula: 0.25*mouse_csf + 0.30*human_csf + 0.05*ev + 0.10*brain + 0.25*autophagy + penalties."
+candidates_ranked.tsv,score_mouse_csf,float,"Mouse CSF evidence component (range 0-1). Calculated as (datasets_detected / 7) * mean(pct_detected across detected datasets). D1 contributes binary detection only."
+candidates_ranked.tsv,score_human_csf,float,"Human CSF evidence component (range 0-1.1). D11 tier score (A=1.0, B=0.7, C=0.3, absent=0) plus +0.1 bonus if independently detected in D10. Can exceed 1.0 by design."
+candidates_ranked.tsv,score_ev,float,"Extracellular vesicle evidence component (range 0-1). Calculated as ev_present * (1 - rank_percentile) from SH-SY5Y EV proteome. Annotation only (weight=0.05)."
+candidates_ranked.tsv,score_brain,float,"Brain plausibility component (0 or 1). Binary: 1.0 if detected in mouse brain lysate (D6), 0 otherwise."
+candidates_ranked.tsv,score_autophagy,float,"Autophagy/lysosome membership component (range 0-1). 1.0 * category modifier if in R1 reference list, 0 if not in R1. Category modifiers: core_machinery=1.0, lysosomal=1.0, mitophagy=0.85, docking=0.85, upstream_regulators=0.70, default=0.80."
+candidates_ranked.tsv,penalties,float,"Sum of penalties applied: -0.1 if ambiguous protein group, -0.1 if ambiguous orthology, -0.2 if likely plasma-derived. Range [-0.4, 0]."
+candidates_ranked.tsv,n_mouse_csf_datasets,int,"Number of mouse CSF datasets (out of 7: D1-D5, D7, D8) in which this protein was detected."
+candidates_ranked.tsv,mouse_csf_best_tier,str,"Best detectability tier achieved across all mouse CSF datasets (A > B > C > absent)."
+candidates_ranked.tsv,d11_tier,str,"Detectability tier in the Astral human CSF discovery cohort (D11, 2720 samples). A=robust, B=moderate, C=exploratory, absent=not detected."
+candidates_ranked.tsv,d12_validated,bool,"True if also detected in the Astral replication cohort (D12, 643 samples). D12 is validation-only and does not affect scoring."
+candidates_ranked.tsv,d10_detected,bool,"True if detected in the independent human CSF dataset D10 (MaxQuant LFQ, 8 samples). Adds +0.1 to score_human_csf."
+candidates_ranked.tsv,d6_brain_detected,bool,"True if detected in mouse brain lysate (D6). Sets score_brain to 1.0."
+candidates_ranked.tsv,d9_isf_detected,bool,"True if detected in mouse interstitial fluid (D9). Informational only, not used in scoring."
+candidates_ranked.tsv,ev_present,bool,"True if present in the SH-SY5Y EV proteome (WT or KO). Used to compute score_ev."
+candidates_ranked.tsv,in_r1,bool,"True if the protein is in the curated R1 autophagy/lysosome reference list (604 genes). Required for core panel selection."
+candidates_ranked.tsv,r1_category,str,"Raw category string from R1 reference list. Contains heterogeneous descriptions (e.g. 'Positive regulator of Autophagy', 'lysosomal dipeptidase'). NaN if not in R1."
+candidates_ranked.tsv,r1_tier,str,"Same as r1_category (retained from R1 Full list sheet). NaN if not in R1."
+candidates_ranked.tsv,is_ambiguous_group,bool,"True if the protein group maps to multiple distinct gene symbols (ambiguous identification). Incurs -0.1 penalty."
+candidates_ranked.tsv,orthology_ambiguous,bool,"True if the mouse-to-human orthology mapping was one-to-many (expanded with flag). Incurs -0.1 penalty."
+candidates_ranked.tsv,likely_plasma_derived,bool,"True if flagged as a high-abundance plasma protein or immunoglobulin/keratin family member. Incurs -0.2 penalty and excludes from core panel."
+candidates_ranked.tsv,feasibility_tier,str,"Peptide feasibility for mass-spec assay development (PRM/MRM). I = >=2 conserved proteotypic peptides across human and mouse; II = human proteotypic peptides available but <2 conserved; III = no suitable peptides. Informational only, not used in ranking or selection. Not relevant for antibody-based platforms (OLINK, SBA)."
+candidates_ranked.tsv,n_conserved_proteotypic,int,"Number of tryptic peptides that are proteotypic in both human and mouse (identical sequence). NaN if not assessed."
+candidates_ranked.tsv,n_proteotypic_human,int,"Number of proteotypic tryptic peptides in the human protein sequence. NaN if not assessed."
+candidates_ranked.tsv,n_proteotypic_mouse,int,"Number of proteotypic tryptic peptides in the mouse ortholog protein sequence. NaN if not assessed."
+candidates_ranked.tsv,module_id,int,"Co-abundance module ID from hierarchical clustering of D11 data. NaN if protein did not pass the 30% completeness filter for module analysis."
+candidates_ranked.tsv,is_hub,bool,"True if the protein is a hub (top 10% intra-module connectivity) within its co-abundance module. NaN if not in module analysis."
+candidates_ranked.tsv,module_connectivity,float,"Intra-module connectivity score (mean absolute correlation with other module members). NaN if not in module analysis."
+candidates_ranked.tsv,inclusion_count,int,"Robustness metric (0–9): number of the 9 sensitivity configurations (3 tier stringencies × 3 weight sets) in which this protein ranks in the top 80 by composite score. 9 = maximally robust; 0 = only appears in the shortlist under the default configuration."
+# ──────────────────────────────────────────────────────────────────────
+# core_panel_shortlist.tsv — Top 80 proteins meeting all core selection criteria
+# Selection criteria: D11 tier A or B + mouse CSF tier A or B in >=1 dataset + in R1 + not plasma-derived
+# 122 proteins pass all criteria; top 80 by composite_score form this shortlist
+# ──────────────────────────────────────────────────────────────────────
+core_panel_shortlist.tsv,rank,int,"Rank from candidates_ranked.tsv (assigned across all 9561 proteins). Gaps indicate non-qualifying proteins at intervening ranks."
+core_panel_shortlist.tsv,human_gene_symbol,str,"Human gene symbol (see candidates_ranked.tsv)."
+core_panel_shortlist.tsv,composite_score,float,"Weighted evidence score clamped to [0, 1] (see candidates_ranked.tsv for formula)."
+core_panel_shortlist.tsv,score_mouse_csf,float,"Mouse CSF evidence component (range 0-1). See candidates_ranked.tsv."
+core_panel_shortlist.tsv,score_human_csf,float,"Human CSF evidence component (range 0-1.1). See candidates_ranked.tsv."
+core_panel_shortlist.tsv,score_ev,float,"EV evidence component (range 0-1). See candidates_ranked.tsv."
+core_panel_shortlist.tsv,score_brain,float,"Brain plausibility component (0 or 1). See candidates_ranked.tsv."
+core_panel_shortlist.tsv,score_autophagy,float,"Autophagy membership component (range 0-1). See candidates_ranked.tsv."
+core_panel_shortlist.tsv,penalties,float,"Sum of penalties (range [-0.4, 0]). See candidates_ranked.tsv."
+core_panel_shortlist.tsv,n_mouse_csf_datasets,int,"Number of mouse CSF datasets with detection (out of 7)."
+core_panel_shortlist.tsv,mouse_csf_best_tier,str,"Best detectability tier across mouse CSF datasets (A/B/C/absent)."
+core_panel_shortlist.tsv,d11_tier,str,"Detectability tier in D11 Astral human CSF cohort."
+core_panel_shortlist.tsv,d12_validated,bool,"True if also detected in D12 replication cohort."
+core_panel_shortlist.tsv,d10_detected,bool,"True if detected in D10 human CSF."
+core_panel_shortlist.tsv,d6_brain_detected,bool,"True if detected in D6 mouse brain lysate."
+core_panel_shortlist.tsv,d9_isf_detected,bool,"True if detected in D9 mouse ISF."
+core_panel_shortlist.tsv,ev_present,bool,"True if present in SH-SY5Y EV proteome."
+core_panel_shortlist.tsv,in_r1,bool,"True if in R1 autophagy/lysosome reference (always True in this file)."
+core_panel_shortlist.tsv,r1_category,str,"Raw category string from R1 reference list."
+core_panel_shortlist.tsv,r1_tier,str,"Same as r1_category."
+core_panel_shortlist.tsv,is_ambiguous_group,bool,"True if ambiguous protein group identification."
+core_panel_shortlist.tsv,orthology_ambiguous,bool,"True if one-to-many orthology mapping."
+core_panel_shortlist.tsv,likely_plasma_derived,bool,"True if plasma-derived (always False in this file, since plasma proteins are excluded)."
+core_panel_shortlist.tsv,r1_functional_category,str,"Same as r1_category. Full functional description from R1 Full list sheet."
+core_panel_shortlist.tsv,r1_scoring_tier,str,"Simplified category used for scoring weight modifiers. One of: core_machinery (1.0), lysosomal (1.0), mitophagy (0.85), docking (0.85), upstream_regulators (0.70), default (0.80)."
+core_panel_shortlist.tsv,secretory_autophagy_cargo,bool,"True if the protein is one of 11 known secretory autophagy cargoes (SEC22B, TRIM16, IL1B, IL18, IL33, HMGB1, ANXA1, ANXA2, FTH1, FTL, GSDMD). Annotation only, not used in selection. All False in current shortlist because none of these 11 passed all four core criteria."
+core_panel_shortlist.tsv,feasibility_tier,str,"Peptide feasibility tier (I/II/III). Informational for mass-spec assay development only. See candidates_ranked.tsv."
+core_panel_shortlist.tsv,n_conserved_proteotypic,int,"Number of conserved proteotypic peptides (human-mouse). See candidates_ranked.tsv."
+core_panel_shortlist.tsv,inclusion_count,int,"Robustness metric (0–9): number of the 9 sensitivity configurations in which this protein ranks in the top 80. See candidates_ranked.tsv."
+# ──────────────────────────────────────────────────────────────────────
+# sensitivity_analysis_summary.tsv — Re-scoring results across 9 parameter configurations
+# Tests robustness of rankings to parameter choices
+# ──────────────────────────────────────────────────────────────────────
+sensitivity_analysis_summary.tsv,tier_option,str,"Detectability tier stringency used for this configuration. A = tier A only; AB = tiers A and B; ABC = tiers A, B, and C."
+sensitivity_analysis_summary.tsv,weight_set,str,"Evidence score weight set. default = mouse_csf:0.25 human_csf:0.30 ev:0.05 brain:0.10 autophagy:0.25; equal = all components ~0.19; csf_heavy = mouse_csf:0.30 human_csf:0.40 ev:0.05 brain:0.05 autophagy:0.15."
+sensitivity_analysis_summary.tsv,human_gene_symbol,str,"Human gene symbol."
+sensitivity_analysis_summary.tsv,rank,int,"Rank of this protein under this parameter configuration (0 = highest)."
+sensitivity_analysis_summary.tsv,score,float,"Composite evidence score under this parameter configuration."
+# ──────────────────────────────────────────────────────────────────────
+# module_validation_summary.tsv — Co-abundance module enrichment for R1 autophagy genes
+# Hierarchical clustering of D11 (2323 proteins with >=30% completeness)
+# ──────────────────────────────────────────────────────────────────────
+module_validation_summary.tsv,module_id,int,"Module identifier from hierarchical clustering. Only modules with >=20 proteins are reported."
+module_validation_summary.tsv,n_genes,int,"Number of proteins assigned to this module."
+module_validation_summary.tsv,n_r1,int,"Number of R1 autophagy/lysosome genes in this module."
+module_validation_summary.tsv,expected_r1,float,"Expected number of R1 genes under random assignment (based on overall R1 proportion in the analysed proteome)."
+module_validation_summary.tsv,fold_enrichment,float,"Fold enrichment of R1 genes in this module (n_r1 / expected_r1)."
+module_validation_summary.tsv,pvalue,float,"Fisher's exact test p-value for R1 enrichment."
+module_validation_summary.tsv,pvalue_adj,float,"Benjamini-Hochberg adjusted p-value (FDR). Modules with pvalue_adj < 0.05 are considered significantly enriched."
+# ──────────────────────────────────────────────────────────────────────
+# overview_matrix_filled.xlsx — R2 HPA antibody panel comparison
+# ──────────────────────────────────────────────────────────────────────
+overview_matrix_filled.xlsx,(sheet),xlsx,"Excel workbook showing the 98 R2 HPA antibody targets with detection status filled in across datasets from the pipeline results. Used for benchmarking overlap between the new panel and the existing targeted assay."
+# ──────────────────────────────────────────────────────────────────────
+# figures/ — Publication-ready PDF figures
+# ──────────────────────────────────────────────────────────────────────
+figures/score_distribution.pdf,(figure),PDF,"Histogram of composite evidence scores. Overlapping distributions for R1 autophagy proteins vs all other proteins."
+figures/comparison_venn.pdf,(figure),PDF,"Three-way Venn diagram comparing the new 80-protein shortlist vs R2 HPA antibody targets vs previous 329-protein EV-autophagy intersection."
+figures/null_distribution.pdf,(figure),PDF,"Null simulation results (1000 iterations). Histogram of expected convergence counts from random gene sets, with observed count marked. Tests whether autophagy gene convergence across species exceeds chance."
+figures/sensitivity_stability.pdf,(figure),PDF,"Rank stability plot showing how top candidate rankings change across 9 parameter configurations (3 tier stringencies x 3 weight sets)."
+figures/module_enrichment.pdf,(figure),PDF,"Co-abundance module enrichment plot showing fold enrichment and FDR for R1 autophagy genes across D11-derived modules."

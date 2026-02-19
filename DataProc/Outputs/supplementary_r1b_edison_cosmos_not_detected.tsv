@@ -1,0 +1,15 @@
+gene_symbol	assigned_tier	status
+ATM	default	not_detected_in_any_dataset
+NOD2	mitophagy	not_detected_in_any_dataset
+PRKN	mitophagy	not_detected_in_any_dataset
+ERN1	default	not_detected_in_any_dataset
+TP53INP2	default	not_detected_in_any_dataset
+RUBCN	upstream_regulators	not_detected_in_any_dataset
+FBXW7	mitophagy	not_detected_in_any_dataset
+PLEKHM1	docking	not_detected_in_any_dataset
+ATP6V0D2	lysosomal	not_detected_in_any_dataset
+USP36	mitophagy	not_detected_in_any_dataset
+RAB7B	lysosomal	not_detected_in_any_dataset
+ATG9B	default	not_detected_in_any_dataset
+MARCHF7	default	not_detected_in_any_dataset
+PXMP4	default	not_detected_in_any_dataset

@@ -1,0 +1,81 @@
+rank	human_gene_symbol	composite_score	score_mouse_csf	score_human_csf	score_ev	score_brain	score_autophagy	penalties	n_mouse_csf_datasets	mouse_csf_best_tier	d11_tier	d12_validated	d10_detected	d6_brain_detected	d9_isf_detected	ev_present	in_r1	r1_category	r1_tier	is_ambiguous_group	orthology_ambiguous	likely_plasma_derived	feasibility_tier	n_conserved_proteotypic	n_proteotypic_human	n_proteotypic_mouse	module_id	is_hub	module_connectivity	inclusion_count
+0	CTSD	1.0	0.997024	1.1	0.924593	1.0	1.0	0.0	7	A	A	True	True	True	True	True	True	CLN10, CPSD, HEL-S-130P	lysosomal	False	False	False	I	3.0	50.0	49.0	569.0	False	0.3877819980121171	9
+1	CTSB	0.974853	1.0	1.1	0.948534	1.0	0.8	0.0	7	A	A	True	True	True	True	True	True	APPS, CPSB	default	False	False	False	II	1.0	37.0	34.0				9
+2	CST3	0.974093	0.997024	1.1	0.948371	1.0	0.8	0.0	7	A	A	True	True	True	True	True	True	ARMD11; HEL-S-2	default	False	False	False	II	0.0	24.0	33.0	940.0	False	0.3535018802455891	9
+3	PRDX6	0.972758	0.997024	1.1	0.935016	1.0	0.8	0.0	7	A	A	True	True	True	True	True	True		default	False	False	False	II	0.0	60.0	0.0	475.0	False	0.3027153696985793	9
+4	PARK7	0.969607	0.95299	1.1	0.888599	1.0	0.85	0.0	7	A	A	True	True	True	True	True	True	Mitophagy core	mitophagy	False	False	False	I	20.0	38.0	36.0	299.0	False	0.4154086835947503	9
+5	HEXB	0.963827	1.0	1.1	0.838274	1.0	0.8	0.0	7	A	A	True	True	True	True	True	True		default	False	False	False	I	5.0	85.0	88.0	949.0	False	0.4312572129691537	9
+6	GGH	0.948096	0.96131	1.1	0.777687	1.0	0.8	0.0	7	A	A	True	True	True	False	True	True		default	False	False	False	II	0.0	51.0	42.0	824.0	False	0.4492347943780329	9
+7	GAA	0.947459	0.904167	1.1	0.914169	1.0	0.8	0.0	7	A	A	True	True	True	False	True	True	LYAG	default	False	False	False	I	6.0	68.0	77.0	949.0	False	0.3918613633887818	9
+8	LAMP1	0.94083	0.888663	1.1	0.886645	1.0	0.8	0.0	7	A	A	True	True	True	True	True	True		default	False	False	False	I	4.0	45.0	37.0	824.0	False	0.4611557420886182	9
+10	ATP6AP1	0.920976	0.991071	1.1	0.682085	1.0	0.7	0.0	7	A	A	True	True	True	True	True	True	mTOR regulators	upstream_regulators	False	False	False	I	12.0	42.0	30.0	951.0	False	0.5082018403453699	9
+11	NPC2	0.919646	0.975	1.1	0.708958	1.0	0.7	0.0	7	A	A	True	True	True	True	True	True	mTOR regulators	upstream_regulators	False	False	False	I	2.0	21.0	26.0	951.0	False	0.2662724453069818	9
+12	EPDR1	0.91029	0.950997	1.0	0.725407	1.0	0.8	0.0	7	A	A	True	False	True	True	True	True		default	False	False	False	I	9.0	31.0	35.0	824.0	False	0.4553211736952393	9
+13	GM2A	0.908152	0.919643	1.1	0.48241	1.0	0.8	0.0	7	A	A	True	True	True	False	True	True		default	False	False	False	I	2.0	16.0	23.0	951.0	False	0.3953487983912426	9
+14	MAN2B1	0.903069	0.937749	1.0	0.686319	1.0	0.8	0.0	7	A	A	True	False	True	True	True	True		default	False	False	False	I	2.0	119.0	118.0	951.0	False	0.3299959426044851	9
+15	PPT1	0.900918	0.747647	1.0	0.640065	1.0	1.0	0.0	6	A	A	True	False	True	False	True	True	PPT; CLN1; INCL	lysosomal	False	False	False	I	6.0	39.0	50.0	541.0	False	0.3112539125763125	9
+16	IDS	0.897637	0.876149	1.1	0.485993	1.0	0.8	0.0	7	A	A	True	True	True	False	True	True		default	False	False	False	I	11.0	44.0	45.0	951.0	False	0.4236644424839563	9
+17	HEXA	0.89736	0.810285	1.1	0.647883	1.0	0.8	0.0	7	A	A	True	True	True	True	True	True		default	False	False	False	I	13.0	70.0	70.0	949.0	True	0.4942844098144024	9
+18	PRDX5	0.894263	0.913469	1.0	0.908958	1.0	0.7	0.0	7	A	A	True	False	True	True	True	True	Candidate kinases required for basal Autophagy	upstream_regulators	False	False	False	II	0.0	37.0	0.0	360.0	False	0.0	9
+19	CTSA	0.886602	0.859178	1.0	0.718078	1.0	0.8	0.0	7	A	A	True	False	True	True	True	True	GLB2, GSL, NGBE, PPCA, PPGB	default	False	False	False	II	1.0	55.0	63.0	949.0	False	0.3230361954133402	9
+20	TPP1	0.885469	0.596207	1.1	0.564169	1.0	1.0	0.0	5	A	A	True	True	True	False	True	True	CLN2, GIG1, LPIC, SCAR7, TPP-1	lysosomal	False	False	False	I	2.0	33.0	39.0	949.0	False	0.4526055624879734	9
+21	CSTB	0.882157	0.604264	1.0	0.810912	1.0	1.0	0.0	6	A	A	True	False	True	True	True	True	lysosomal cysteine protease inhibitor	lysosomal	False	False	False	II	0.0	15.0	19.0	474.0	False	0.0	9
+22	LAMP2	0.874688	0.682337	1.1	0.741042	1.0	0.8	0.0	6	A	A	True	True	True	False	True	True		default	False	False	False	II	0.0	30.0	38.0	824.0	False	0.3596975092429405	9
+24	CTSF	0.871651	0.440871	1.1	0.814332	1.0	1.0	0.0	5	A	A	True	True	True	False	True	True	CATSF, CLN13	lysosomal	False	False	False	I	2.0	83.0	70.0	949.0	False	0.4720431099271409	8
+26	GNS	0.867594	0.632198	1.1	0.79544	1.0	0.8	0.0	5	A	A	True	True	True	True	True	True		default	False	False	False	I	30.0	70.0	79.0	949.0	True	0.4893787850935454	9
+27	LGMN	0.867183	0.953225	1.0	0.288762	1.0	0.8	0.0	7	A	A	True	False	True	False	True	True	AEP; LGMN1; PRSC1	default	False	False	False	I	8.0	48.0	48.0	949.0	False	0.3502165713504671	7
+28	UBE2N	0.858691	0.605544	1.0	0.948046	1.0	0.85	0.0	6	A	A	True	False	True	True	True	True	Mitophagy core	mitophagy	False	False	False	I	32.0	32.0	32.0	971.0	False	0.0	7
+29	RAB7A	0.858034	0.852658	1.0	0.948697	1.0	1.0	-0.1	7	A	A	True	False	True	True	True	True	Rab proteins involved in autophagosome formation	core_machinery	True	False	False	I	48.0	48.0	48.0	368.0	False	0.0	6
+30	PCYOX1	0.85349	0.705163	1.1	0.471987	1.0	0.8	0.0	6	A	A	True	True	True	False	True	True		default	False	False	False	I	6.0	58.0	72.0	555.0	False	0.3071085334493778	6
+31	VCP	0.851335	0.918272	0.7	0.992671	1.0	0.85	0.0	7	A	B	True	False	True	True	True	True	Mitophagy core	mitophagy	False	False	False	I	164.0	164.0	164.0	433.0	False	0.0	4
+32	CTSH	0.848907	0.650872	1.1	0.561889	1.0	0.8	0.0	7	A	A	True	True	True	False	True	True	ACC4; ACC5; CPSB; ACC-4; ACC-5	default	False	False	False	I	2.0	45.0	49.0	840.0	False	0.0	4
+33	PLBD2	0.847828	0.612874	1.1	0.646091	1.0	0.8	0.0	6	A	A	True	True	True	True	True	True	P76	default	False	False	False	I	6.0	55.0	49.0	951.0	False	0.4028071616695857	7
+35	ASAH1	0.843701	0.593826	1.1	0.652443	1.0	0.8	0.0	5	A	A	True	True	True	False	True	True		default	False	False	False	I	6.0	60.0	64.0	824.0	False	0.4325516594669263	9
+36	ARSB	0.842457	0.773477	1.0	0.490879	1.0	0.8	0.0	6	A	A	True	False	True	False	True	True	ASB; G4S; MPS6	default	False	False	False	I	8.0	73.0	55.0	841.0	False	0.0	9
+37	MANBA	0.839403	0.611226	1.1	0.565961	1.0	0.8	0.0	5	A	A	True	True	True	False	True	True		default	False	False	False	I	2.0	99.0	122.0	951.0	False	0.4840846130430656	9
+38	PRCP	0.836637	0.495017	1.1	0.828827	1.0	0.8	0.0	4	A	A	True	True	True	False	True	True	HUMPCP, PCP	default	False	False	False	II	1.0	47.0	47.0	658.0	False	0.0	7
+39	RAB5C	0.836542	0.376786	1.0	0.923453	1.0	1.0	0.0	4	A	A	True	False	True	False	True	True	Rab proteins involved in autophagosome formation	core_machinery	False	False	False	I	30.0	39.0	39.0	817.0	False	0.0	6
+40	SQSTM1	0.835813	0.482143	1.0	0.652769	1.0	1.0	0.0	4	A	A	True	False	True	False	True	True	Cargo receptors for Selective Autophagy	core_machinery	False	False	False	I	17.0	42.0	42.0	914.0	False	0.3879140732824189	6
+41	RAB14	0.835467	0.615026	1.0	0.817101	1.0	0.8	0.0	6	A	A	True	False	True	False	True	True		default	False	False	False	I	35.0	35.0	35.0	860.0	False	0.0	6
+42	FUCA1	0.832416	0.564909	1.1	0.611889	1.0	0.8	0.0	6	A	A	True	True	True	False	True	True		default	False	False	False	I	11.0	47.0	50.0	949.0	False	0.4273522524316211	7
+43	CAPNS1	0.823532	0.573214	1.0	0.80228	1.0	0.8	0.0	5	A	A	True	False	True	False	True	True	Negative Regulator of Autophagy	default	False	False	False	I	15.0	31.0	32.0	299.0	False	0.3286475179057757	6
+44	GLB1	0.817955	0.527976	1.0	0.859609	1.0	0.8	0.0	4	A	A	True	False	True	False	True	True		default	False	False	False	II	1.0	71.0	67.0	873.0	False	0.3444412980131621	6
+45	SCPEP1	0.81678	0.340476	1.0	0.816612	1.0	1.0	0.0	4	A	A	True	False	True	False	True	True	Lysosomal hydrolases and accessory proteins	lysosomal	False	False	False	I	3.0	55.0	57.0	513.0	False	0.0	6
+46	ITM2C	0.809543	0.360714	1.1	0.893648	1.0	0.8	0.0	3	A	A	True	True	True	False	True	True		default	False	False	False	I	15.0	36.0	39.0	934.0	False	0.3005192903705281	6
+47	NAGA	0.808489	0.535714	1.1	0.445603	1.0	0.8	0.0	5	A	A	True	True	True	False	True	True		default	False	False	False	I	3.0	40.0	69.0	949.0	False	0.3401944839584745	3
+48	ACP2	0.808255	0.605136	1.0	0.569707	1.0	0.8	0.0	5	A	A	True	False	True	False	True	True	LAP	default	False	False	False	I	22.0	63.0	52.0	951.0	False	0.3597090921653218	6
+49	ATP6V1A	0.799284	0.524107	1.0	0.932573	1.0	0.7	0.0	4	A	A	True	False	True	True	True	True	mTOR regulators	upstream_regulators	False	False	False	I	72.0	104.0	104.0				4
+50	RAB4B	0.798002	0.367906	1.0	0.560261	1.0	1.0	0.0	4	A	A	True	False	True	False	True	True	Rab proteins involved in autophagosome formation	core_machinery	False	False	False	I	38.0	42.0	42.0	951.0	False	0.3650141907096802	3
+51	ATP6AP2	0.789818	0.608458	1.1	0.327036	1.0	0.7	0.0	5	A	A	True	True	True	False	True	True	mTOR regulators	upstream_regulators	False	False	False	I	18.0	43.0	41.0	532.0	False	0.4531005662448761	3
+52	ATP6V1B2	0.788551	0.480655	1.0	0.933876	1.0	0.7	0.0	4	A	A	True	False	True	True	True	True	mTOR regulators	upstream_regulators	False	False	False	I	68.0	77.0	77.0				4
+53	NAGLU	0.787876	0.428571	1.1	0.507329	1.0	0.8	0.0	3	A	A	True	True	True	False	True	True	NAG; CMT2V; MPS3B; UFHSD; MPS-IIIB	default	False	False	False	II	0.0	80.0	0.0	553.0	False	0.2419709000294184	3
+54	GABARAPL2	0.78652	0.166667	1.1	0.648534	1.0	1.0	0.0	2	A	A	True	True	True	False	True	True	ATG8 Ubiquitin-like conjugation systems	core_machinery	False	False	False	I	36.0	36.0	36.0	951.0	False	0.3002626157771485	3
+55	CAPN2	0.783028	0.464881	1.0	0.668078	1.0	0.8	0.0	5	A	A	False	False	True	False	True	True	Negative Regulator of Autophagy	default	False	False	False	I	51.0	109.0	111.0	569.0	False	0.3991865683465316	3
+56	RAB1A	0.780253	0.700491	1.0	0.551303	1.0	1.0	-0.1	7	A	A	False	False	True	True	True	True	Rab proteins involved in autophagosome formation	core_machinery	True	False	False	I	47.0	47.0	47.0	861.0	False	0.0	1
+68	SMPD1	0.773331	0.54492	1.0	0.37101	1.0	0.8	0.0	5	A	A	True	False	True	False	True	True		default	False	False	False	I	12.0	57.0	59.0	951.0	False	0.3944007494077448	3
+69	MAN2B2	0.773031	0.668605	1.0	0.058795	1.0	0.8	0.0	6	A	A	True	False	True	False	True	True		default	False	False	False	I	8.0	96.0	108.0	949.0	False	0.3491844996734468	1
+77	UBE2L3	0.768877	0.702512	1.0	0.807492	1.0	0.85	-0.1	7	A	A	True	False	True	False	True	True	Mitophagy core	mitophagy	False	True	False	I	33.0	33.0	33.0	686.0	False	0.0	2
+83	TGM2	0.766796	0.65598	1.0	0.278013	1.0	0.7	0.0	6	A	A	True	False	True	False	True	True	Positive regulator of Autophagy	upstream_regulators	False	False	False	I	12.0	102.0	105.0	447.0	False	0.0	3
+92	GALC	0.762224	0.228571	1.1	0.750814	1.0	0.8	0.0	3	A	A	True	True	True	False	True	True		default	False	False	False	I	7.0	74.0	60.0	874.0	False	0.0	1
+93	IDUA	0.760825	0.376786	1.0	0.666287	1.0	0.8	0.0	3	A	A	True	False	True	False	True	True	IDA; MPS1	default	False	False	False	II	1.0	76.0	49.0	951.0	False	0.2904185598193127	1
+94	NEU1	0.760427	0.309524	1.1	0.530456	1.0	0.8	0.0	3	A	A	True	True	True	False	True	True		default	False	False	False	I	12.0	46.0	55.0	949.0	False	0.4246482610901462	1
+100	GLA	0.757788	0.316168	1.0	0.787459	1.0	0.8	0.0	4	A	A	True	False	True	False	True	True		default	False	False	False	II	0.0	34.0	50.0	652.0	False	0.3220547030548968	0
+112	GALNS	0.750466	0.441667	1.0	0.400489	1.0	0.8	0.0	4	A	A	True	False	True	False	True	True		default	False	False	False	I	12.0	46.0	49.0	951.0	False	0.3516965535242244	2
+119	STX7	0.748253	0.340179	1.0	0.632085	1.0	0.8	0.0	3	A	A	True	False	True	False	True	True		default	False	False	False	I	30.0	46.0	53.0	911.0	False	0.3358758891796441	0
+120	CAPN1	0.748025	0.285714	1.0	0.765961	1.0	0.8	0.0	2	A	A	True	False	True	False	True	True	Negative Regulator of Autophagy	default	False	False	False	I	31.0	142.0	157.0	428.0	False	0.0	0
+132	MST1	0.737342	0.565656	1.1	0.659283	0.0	0.8	0.0	5	A	A	True	True	False	False	True	True	Negative Regulator of Autophagy	default	False	False	False	I	11.0	112.0	109.0	99.0	False	0.3208753716211505	0
+141	NCSTN	0.733777	0.208333	1.0	0.816938	1.0	0.8	0.0	2	A	A	True	False	True	False	True	True	ATAG1874	default	False	False	False	I	11.0	65.0	70.0	951.0	False	0.3895425762477762	0
+143	ATP6V1H	0.733588	0.297024	1.0	0.843322	1.0	0.7	0.0	3	A	A	True	False	True	True	True	True	mTOR regulators	upstream_regulators	False	False	False	I	83.0	94.0	95.0	557.0	False	0.0	0
+160	CAST	0.725146	0.415179	1.0	0.463518	1.0	0.7	0.0	3	A	A	True	False	True	False	True	True	Positive regulator of Autophagy	upstream_regulators	False	False	False	II	0.0	37.0	155.0	491.0	False	0.0	0
+170	ABCA2	0.720431	0.200097	1.1	0.404072	1.0	0.8	0.0	3	A	A	True	True	True	False	True	True		default	False	False	False	I	160.0	291.0	271.0	951.0	False	0.4556798534687764	0
+173	GUSB	0.719093	0.183929	1.0	0.731107	1.0	0.8	0.0	3	A	A	True	False	True	False	True	True		default	False	False	False	I	7.0	71.0	82.0				0
+185	STAT1	0.714036	0.21875	1.0	0.843485	1.0	0.7	0.0	2	A	A	False	False	True	False	True	True	Negative regulator of Autophagy genes	upstream_regulators	False	False	False	I	49.0	147.0	143.0				0
+189	VPS35	0.713018	0.434025	0.7	0.945114	1.0	0.8	0.0	5	A	B	False	False	True	True	True	True		default	False	False	False	I	129.0	145.0	144.0				0
+190	SIAE	0.712779	0.276786	1.1	0.135831	1.0	0.8	0.0	2	A	A	True	True	True	False	True	True		default	False	False	False	I	8.0	54.0	51.0	824.0	False	0.4720897688203313	0
+201	CHID1	0.710523	0.16131	1.0	0.701954	1.0	0.8	0.0	2	A	A	True	False	True	False	True	True		default	False	False	False	I	14.0	74.0	70.0	951.0	False	0.3870440860743941	0
+207	CAB39	0.706336	0.252381	1.0	0.68241	1.0	0.7	0.0	3	A	A	True	False	True	True	True	True	AMPK activator	upstream_regulators	False	False	False	I	84.0	92.0	92.0	364.0	False	0.0	0
+212	CTSC	0.705265	0.544124	1.1	0.392345	0.0	0.8	0.0	5	A	A	True	True	False	False	True	True	JP; HMS; JPD; PLS; CPPI; DPP1; DPPI; PALS; DPP-I; PDON1	default	False	False	False	II	0.0	57.0	56.0	143.0	False	0.3527068640194117	0
+256	NPC1	0.685586	0.358631	1.0	0.209283	1.0	0.7	0.0	3	A	A	True	False	True	False	True	True	mTOR regulators	upstream_regulators	False	False	False	I	11.0	94.0	89.0	209.0	False	0.0	0
+264	MYO6	0.682318	0.138393	1.0	0.727199	1.0	0.7	0.0	2	A	A	False	False	True	False	True	True	Positive regulator of Autophagy	upstream_regulators	False	False	False	I	213.0	337.0	328.0	569.0	False	0.3086745777912328	0
+265	RNASET2	0.681843	0.526786	1.1	0.201466	1.0	0.8	-0.1	4	A	A	True	True	True	False	True	True		default	True	False	False	II	0.0	54.0	35.0	951.0	False	0.1655744809560101	0
+304	ATG3	0.670953	0.193452	0.7	0.625896	1.0	1.0	0.0	3	A	B	False	False	True	False	True	True	ATG8 Ubiquitin-like conjugation systems	core_machinery	False	False	False	I	28.0	40.0	40.0				0

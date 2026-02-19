@@ -1,0 +1,172 @@
+======================================================================
+SUPPLEMENTARY GENE SCORING REPORT
+List: R1b - Edison/Cosmos 2026-02
+  56 novel autophagy genes + 9 HADb core proteins from systematic database search
+Generated: 2026-02-19 16:46:04
+======================================================================
+
+--------------------------------------------------
+INPUT SUMMARY
+--------------------------------------------------
+  Total supplementary genes:     65
+  Found in pipeline (rescored):  51
+  Not detected in any dataset:   14
+
+--------------------------------------------------
+ASSIGNED TIER DISTRIBUTION (found genes)
+--------------------------------------------------
+  default                    19  (modifier 0.80)
+  mitophagy                  17  (modifier 0.85)
+  lysosomal                   7  (modifier 1.00)
+  core_machinery              5  (modifier 1.00)
+  upstream_regulators         2  (modifier 0.70)
+  docking                     1  (modifier 0.85)
+
+--------------------------------------------------
+GENES NOT DETECTED IN ANY DATASET
+--------------------------------------------------
+  ATG9B           (tier: default)
+  ATM             (tier: default)
+  ATP6V0D2        (tier: lysosomal)
+  ERN1            (tier: default)
+  FBXW7           (tier: mitophagy)
+  MARCHF7         (tier: default)
+  NOD2            (tier: mitophagy)
+  PLEKHM1         (tier: docking)
+  PRKN            (tier: mitophagy)
+  PXMP4           (tier: default)
+  RAB7B           (tier: lysosomal)
+  RUBCN           (tier: upstream_regulators)
+  TP53INP2        (tier: default)
+  USP36           (tier: mitophagy)
+
+--------------------------------------------------
+RESCORED RESULTS (sorted by new composite score)
+--------------------------------------------------
+Gene               New     Old   Delta Tier                  D11  Mouse   EV  Brain
+---------------------------------------------------------------------------
+PSAP             1.000   0.767  +0.233 lysosomal               A      A    Y      Y
+CLTC             0.870   0.620  +0.250 lysosomal               A      A    Y      Y
+HSP90AA1         0.829   0.629  +0.200 default                 A      A    Y      Y
+SKP1             0.808   0.595  +0.212 mitophagy               A      A    N      Y
+CANX             0.780   0.580  +0.200 default                 A      A    Y      Y
+CDC37            0.776   0.564  +0.212 mitophagy               A      A    Y      Y
+IQGAP1           0.763   0.563  +0.200 default                 A      A    Y      Y
+TOLLIP           0.727   0.477  +0.250 core_machinery          B      A    Y      Y
+VDAC1            0.716   0.504  +0.212 mitophagy               B      A    Y      Y
+YIPF3            0.699   0.499  +0.200 default                 A      A    Y      Y
+HSPA8            0.680   0.430  +0.250 core_machinery          A absent    Y      N
+EIF2S1           0.670   0.458  +0.212 mitophagy               B      A    Y      Y
+GFAP             0.663   0.463  +0.200 default                 A      A    N      Y
+TSG101           0.662   0.462  +0.200 default                 B      A    Y      Y
+ITPR1            0.651   0.451  +0.200 default                 A      A    Y      Y
+UBB              0.512   0.300  +0.212 mitophagy               A absent    N      N
+GBA1             0.475   0.225  +0.250 lysosomal            absent      A    Y      Y
+VPS13C           0.465   0.215  +0.250 lysosomal            absent      A    Y      Y
+HUWE1            0.459   0.246  +0.212 mitophagy            absent      A    Y      Y
+CUL1             0.442   0.229  +0.213 mitophagy            absent      A    Y      Y
+ANKFY1           0.435   0.235  +0.200 default              absent      A    Y      Y
+WDR81            0.431   0.181  +0.250 lysosomal            absent      B    Y      Y
+OGT              0.424   0.212  +0.213 mitophagy            absent      A    Y      Y
+HTT              0.424   0.212  +0.212 mitophagy            absent      A    Y      Y
+CHMP2B           0.421   0.171  +0.250 lysosomal            absent      A    Y      Y
+EIF4E            0.419   0.244  +0.175 upstream_regulators  absent      A    Y      Y
+VPS28            0.416   0.216  +0.200 default              absent      A    Y      Y
+PGAM5            0.413   0.201  +0.212 mitophagy            absent      A    Y      Y
+HK2              0.400   0.187  +0.213 mitophagy            absent absent    Y      Y
+PIKFYVE          0.399   0.149  +0.250 lysosomal            absent      A    Y      Y
+FKBP8            0.389   0.177  +0.213 mitophagy            absent      A    Y      Y
+TECPR2           0.381   0.131  +0.250 core_machinery       absent absent    Y      Y
+RAB39B           0.367   0.167  +0.200 default              absent      A    Y      Y
+TMEM41B          0.356   0.106  +0.250 core_machinery       absent      A    N      Y
+AKT2             0.353   0.178  +0.175 upstream_regulators  absent      A    Y      Y
+NRBF2            0.350   0.100  +0.250 core_machinery       absent absent    N      Y
+VPS37A           0.349   0.149  +0.200 default              absent      B    Y      Y
+WDR41            0.348   0.148  +0.200 default              absent absent    Y      Y
+PEX5             0.348   0.148  +0.200 default              absent      A    Y      Y
+SMCR8            0.347   0.147  +0.200 default              absent absent    Y      Y
+UBXN6            0.344   0.131  +0.212 mitophagy            absent      A    N      Y
+TSPO             0.343   0.131  +0.212 mitophagy            absent      A    N      Y
+VAMP8            0.336   0.124  +0.212 docking              absent      A    N      Y
+MTMR14           0.333   0.133  +0.200 default              absent      B    Y      Y
+YIPF4            0.331   0.131  +0.200 default              absent absent    Y      Y
+MTMR3            0.324   0.124  +0.200 default              absent      B    Y      Y
+PARL             0.319   0.107  +0.213 mitophagy            absent      B    N      Y
+BAD              0.313   0.113  +0.200 default              absent      A    N      Y
+AKAP11           0.300   0.100  +0.200 default              absent absent    N      Y
+TIMM23           0.230   0.017  +0.212 mitophagy            absent      A    N      Y
+UBC              0.148   0.000  +0.148 mitophagy            absent      A    N      N
+
+--------------------------------------------------
+CORE PANEL QUALIFIED (14 R1b genes pass all 4 gates)
+--------------------------------------------------
+  PSAP           score=1.000  D11=A  mouse=A  tier=lysosomal
+  CLTC           score=0.870  D11=A  mouse=A  tier=lysosomal
+  HSP90AA1       score=0.829  D11=A  mouse=A  tier=default
+  SKP1           score=0.808  D11=A  mouse=A  tier=mitophagy
+  CANX           score=0.780  D11=A  mouse=A  tier=default
+  CDC37          score=0.776  D11=A  mouse=A  tier=mitophagy
+  IQGAP1         score=0.763  D11=A  mouse=A  tier=default
+  TOLLIP         score=0.727  D11=B  mouse=A  tier=core_machinery
+  VDAC1          score=0.716  D11=B  mouse=A  tier=mitophagy
+  YIPF3          score=0.699  D11=A  mouse=A  tier=default
+  EIF2S1         score=0.670  D11=B  mouse=A  tier=mitophagy
+  GFAP           score=0.663  D11=A  mouse=A  tier=default
+  TSG101         score=0.662  D11=B  mouse=A  tier=default
+  ITPR1          score=0.651  D11=A  mouse=A  tier=default
+
+--------------------------------------------------
+COMBINED RANKING: 122 R1 + 14 R1b = 136 total
+--------------------------------------------------
+
+Top 30:
+    1. CTSD           score=1.000  [R1]
+    2. PSAP           score=1.000  [R1b] *R1b*
+    3. CTSB           score=0.975  [R1]
+    4. CST3           score=0.974  [R1]
+    5. PRDX6          score=0.973  [R1]
+    6. PARK7          score=0.970  [R1]
+    7. HEXB           score=0.964  [R1]
+    8. GGH            score=0.948  [R1]
+    9. GAA            score=0.947  [R1]
+   10. LAMP1          score=0.941  [R1]
+   11. CPQ            score=0.926  [R1]
+   12. ATP6AP1        score=0.921  [R1]
+   13. NPC2           score=0.920  [R1]
+   14. EPDR1          score=0.910  [R1]
+   15. GM2A           score=0.908  [R1]
+   16. MAN2B1         score=0.903  [R1]
+   17. PPT1           score=0.901  [R1]
+   18. IDS            score=0.898  [R1]
+   19. HEXA           score=0.897  [R1]
+   20. PRDX5          score=0.894  [R1]
+   21. CTSA           score=0.887  [R1]
+   22. TPP1           score=0.885  [R1]
+   23. CSTB           score=0.882  [R1]
+   24. LAMP2          score=0.875  [R1]
+   25. CTSS           score=0.872  [R1]
+   26. CTSF           score=0.872  [R1]
+   27. CLTC           score=0.870  [R1b] *R1b*
+   28. CTSZ           score=0.870  [R1]
+   29. GNS            score=0.868  [R1]
+   30. LGMN           score=0.867  [R1]
+
+R1b genes in combined ranking:
+  rank   2: PSAP           score=1.000
+  rank  27: CLTC           score=0.870
+  rank  46: HSP90AA1       score=0.829
+  rank  53: SKP1           score=0.808
+  rank  62: CANX           score=0.780
+  rank  63: CDC37          score=0.776
+  rank  68: IQGAP1         score=0.763
+  rank  80: TOLLIP         score=0.727
+  rank  84: VDAC1          score=0.716
+  rank  92: YIPF3          score=0.699
+  rank  98: EIF2S1         score=0.670
+  rank 101: GFAP           score=0.663
+  rank 102: TSG101         score=0.662
+  rank 106: ITPR1          score=0.651
+
+======================================================================
+END OF REPORT
+======================================================================

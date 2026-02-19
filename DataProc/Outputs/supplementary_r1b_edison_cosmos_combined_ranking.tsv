@@ -1,0 +1,137 @@
+r1_tier	r1_category	ev_present	score_human_csf	composite_score	rank	penalties	source	score_ev	n_mouse_csf_datasets	d6_brain_detected	d10_detected	in_r1	d12_validated	likely_plasma_derived	score_autophagy	orthology_ambiguous	score_mouse_csf	is_ambiguous_group	human_gene_symbol	d9_isf_detected	in_r1b	d11_tier	score_brain	mouse_csf_best_tier	combined_rank
+lysosomal	CLN10, CPSD, HEL-S-130P	True	1.1	1.0	0	0.0	R1	0.924593	7	True	True	True	True	False	1.0	False	0.997024	False	CTSD	True	False	A	1.0	A	1
+		True	1.1	1.0	82	0.0	R1b	0.905537	7	True	True	False	True	False	1.0	False	0.985714	False	PSAP	True	True	A	1.0	A	2
+default	APPS, CPSB	True	1.1	0.974853	1	0.0	R1	0.948534	7	True	True	True	True	False	0.8	False	1.0	False	CTSB	True	False	A	1.0	A	3
+default	ARMD11; HEL-S-2	True	1.1	0.974093	2	0.0	R1	0.948371	7	True	True	True	True	False	0.8	False	0.997024	False	CST3	True	False	A	1.0	A	4
+default		True	1.1	0.972758	3	0.0	R1	0.935016	7	True	True	True	True	False	0.8	False	0.997024	False	PRDX6	True	False	A	1.0	A	5
+mitophagy	Mitophagy core	True	1.1	0.969607	4	0.0	R1	0.888599	7	True	True	True	True	False	0.85	False	0.95299	False	PARK7	True	False	A	1.0	A	6
+default		True	1.1	0.963827	5	0.0	R1	0.838274	7	True	True	True	True	False	0.8	False	1.0	False	HEXB	True	False	A	1.0	A	7
+default		True	1.1	0.948096	6	0.0	R1	0.777687	7	True	True	True	True	False	0.8	False	0.96131	False	GGH	False	False	A	1.0	A	8
+default	LYAG	True	1.1	0.947459	7	0.0	R1	0.914169	7	True	True	True	True	False	0.8	False	0.904167	False	GAA	False	False	A	1.0	A	9
+default		True	1.1	0.94083	8	0.0	R1	0.886645	7	True	True	True	True	False	0.8	False	0.888663	False	LAMP1	True	False	A	1.0	A	10
+lysosomal	plasma glutamate carboxypeptidase,lysosomal dipeptidase	False	1.1	0.92628	9	0.0	R1	0.0	7	True	True	True	True	False	1.0	False	0.985119	False	CPQ	True	False	A	1.0	A	11
+upstream_regulators	mTOR regulators	True	1.1	0.920976	10	0.0	R1	0.682085	7	True	True	True	True	False	0.7	False	0.991071	False	ATP6AP1	True	False	A	1.0	A	12
+upstream_regulators	mTOR regulators	True	1.1	0.919646	11	0.0	R1	0.708958	7	True	True	True	True	False	0.7	False	0.975	False	NPC2	True	False	A	1.0	A	13
+default		True	1.0	0.91029	12	0.0	R1	0.725407	7	True	False	True	True	False	0.8	False	0.950997	False	EPDR1	True	False	A	1.0	A	14
+default		True	1.1	0.908152	13	0.0	R1	0.48241	7	True	True	True	True	False	0.8	False	0.919643	False	GM2A	False	False	A	1.0	A	15
+default		True	1.0	0.903069	14	0.0	R1	0.686319	7	True	False	True	True	False	0.8	False	0.937749	False	MAN2B1	True	False	A	1.0	A	16
+lysosomal	PPT; CLN1; INCL	True	1.0	0.900918	15	0.0	R1	0.640065	6	True	False	True	True	False	1.0	False	0.747647	False	PPT1	False	False	A	1.0	A	17
+default		True	1.1	0.897637	16	0.0	R1	0.485993	7	True	True	True	True	False	0.8	False	0.876149	False	IDS	False	False	A	1.0	A	18
+default		True	1.1	0.89736	17	0.0	R1	0.647883	7	True	True	True	True	False	0.8	False	0.810285	False	HEXA	True	False	A	1.0	A	19
+upstream_regulators	Candidate kinases required for basal Autophagy	True	1.0	0.894263	18	0.0	R1	0.908958	7	True	False	True	True	False	0.7	False	0.913469	False	PRDX5	True	False	A	1.0	A	20
+default	GLB2, GSL, NGBE, PPCA, PPGB	True	1.0	0.886602	19	0.0	R1	0.718078	7	True	False	True	True	False	0.8	False	0.859178	False	CTSA	True	False	A	1.0	A	21
+lysosomal	CLN2, GIG1, LPIC, SCAR7, TPP-1	True	1.1	0.885469	20	0.0	R1	0.564169	5	True	True	True	True	False	1.0	False	0.596207	False	TPP1	False	False	A	1.0	A	22
+lysosomal	lysosomal cysteine protease inhibitor	True	1.0	0.882157	21	0.0	R1	0.810912	6	True	False	True	True	False	1.0	False	0.604264	False	CSTB	True	False	A	1.0	A	23
+default		True	1.1	0.874688	22	0.0	R1	0.741042	6	True	True	True	True	False	0.8	False	0.682337	False	LAMP2	False	False	A	1.0	A	24
+default	none	False	1.1	0.871815	23	0.0	R1	0.0	7	True	True	True	True	False	0.8	False	0.967262	False	CTSS	True	False	A	1.0	A	25
+lysosomal	CATSF, CLN13	True	1.1	0.871651	24	0.0	R1	0.814332	5	True	True	True	True	False	1.0	False	0.440871	False	CTSF	False	False	A	1.0	A	26
+		True	1.0	0.8701501500000001	500	-0.1	R1b	0.999674	7	True	False	False	True	False	1.0	False	0.880731	True	CLTC	True	True	A	1.0	A	27
+default	CTSX	False	1.1	0.869583	25	0.0	R1	0.0	7	True	True	True	True	False	0.8	False	0.958333	False	CTSZ	True	False	A	1.0	A	28
+default		True	1.1	0.867594	26	0.0	R1	0.79544	5	True	True	True	True	False	0.8	False	0.632198	False	GNS	True	False	A	1.0	A	29
+default	AEP; LGMN1; PRSC1	True	1.0	0.867183	27	0.0	R1	0.288762	7	True	False	True	True	False	0.8	False	0.953225	False	LGMN	False	False	A	1.0	A	30
+mitophagy	Mitophagy core	True	1.0	0.858691	28	0.0	R1	0.948046	6	True	False	True	True	False	0.85	False	0.605544	False	UBE2N	True	False	A	1.0	A	31
+core_machinery	Rab proteins involved in autophagosome formation	True	1.0	0.858034	29	-0.1	R1	0.948697	7	True	False	True	True	False	1.0	False	0.852658	True	RAB7A	True	False	A	1.0	A	32
+default		True	1.1	0.85349	30	0.0	R1	0.471987	6	True	True	True	True	False	0.8	False	0.705163	False	PCYOX1	False	False	A	1.0	A	33
+mitophagy	Mitophagy core	True	0.7	0.851335	31	0.0	R1	0.992671	7	True	False	True	True	False	0.85	False	0.918272	False	VCP	True	False	B	1.0	A	34
+default	ACC4; ACC5; CPSB; ACC-4; ACC-5	True	1.1	0.848907	32	0.0	R1	0.561889	7	True	True	True	True	False	0.8	False	0.650872	False	CTSH	False	False	A	1.0	A	35
+default	P76	True	1.1	0.847828	33	0.0	R1	0.646091	6	True	True	True	True	False	0.8	False	0.612874	False	PLBD2	True	False	A	1.0	A	36
+default		False	1.1	0.845379	34	0.0	R1	0.0	7	True	True	True	True	False	0.8	False	0.861517	False	CTBS	True	False	A	1.0	A	37
+default		True	1.1	0.843701	35	0.0	R1	0.652443	5	True	True	True	True	False	0.8	False	0.593826	False	ASAH1	False	False	A	1.0	A	38
+default	ASB; G4S; MPS6	True	1.0	0.842457	36	0.0	R1	0.490879	6	True	False	True	True	False	0.8	False	0.773477	False	ARSB	False	False	A	1.0	A	39
+default		True	1.1	0.839403	37	0.0	R1	0.565961	5	True	True	True	True	False	0.8	False	0.611226	False	MANBA	False	False	A	1.0	A	40
+default	HUMPCP, PCP	True	1.1	0.836637	38	0.0	R1	0.828827	4	True	True	True	True	False	0.8	False	0.495017	False	PRCP	False	False	A	1.0	A	41
+core_machinery	Rab proteins involved in autophagosome formation	True	1.0	0.836542	39	0.0	R1	0.923453	4	True	False	True	True	False	1.0	False	0.376786	False	RAB5C	False	False	A	1.0	A	42
+core_machinery	Cargo receptors for Selective Autophagy	True	1.0	0.835813	40	0.0	R1	0.652769	4	True	False	True	True	False	1.0	False	0.482143	False	SQSTM1	False	False	A	1.0	A	43
+default		True	1.0	0.835467	41	0.0	R1	0.817101	6	True	False	True	True	False	0.8	False	0.615026	False	RAB14	False	False	A	1.0	A	44
+default		True	1.1	0.832416	42	0.0	R1	0.611889	6	True	True	True	True	False	0.8	False	0.564909	False	FUCA1	False	False	A	1.0	A	45
+		True	1.0	0.8291383	457	-0.1	R1b	0.999023	7	True	False	False	True	False	0.8	False	0.916944	True	HSP90AA1	True	True	A	1.0	A	46
+default	Negative Regulator of Autophagy	True	1.0	0.823532	43	0.0	R1	0.80228	5	True	False	True	True	False	0.8	False	0.573214	False	CAPNS1	False	False	A	1.0	A	47
+default		True	1.0	0.817955	44	0.0	R1	0.859609	4	True	False	True	True	False	0.8	False	0.527976	False	GLB1	False	False	A	1.0	A	48
+lysosomal	Lysosomal hydrolases and accessory proteins	True	1.0	0.81678	45	0.0	R1	0.816612	4	True	False	True	True	False	1.0	False	0.340476	False	SCPEP1	False	False	A	1.0	A	49
+default		True	1.1	0.809543	46	0.0	R1	0.893648	3	True	True	True	True	False	0.8	False	0.360714	False	ITM2C	False	False	A	1.0	A	50
+default		True	1.1	0.808489	47	0.0	R1	0.445603	5	True	True	True	True	False	0.8	False	0.535714	False	NAGA	False	False	A	1.0	A	51
+default	LAP	True	1.0	0.808255	48	0.0	R1	0.569707	5	True	False	True	True	False	0.8	False	0.605136	False	ACP2	False	False	A	1.0	A	52
+		False	1.1	0.80770275	611	0.0	R1b	0.0	6	True	True	False	True	False	0.85	False	0.660811	False	SKP1	True	True	A	1.0	A	53
+upstream_regulators	mTOR regulators	True	1.0	0.799284	49	0.0	R1	0.932573	4	True	False	True	True	False	0.7	False	0.524107	False	ATP6V1A	True	False	A	1.0	A	54
+core_machinery	Rab proteins involved in autophagosome formation	True	1.0	0.798002	50	0.0	R1	0.560261	4	True	False	True	True	False	1.0	False	0.367906	False	RAB4B	False	False	A	1.0	A	55
+upstream_regulators	mTOR regulators	True	1.1	0.789818	51	0.0	R1	0.327036	5	True	True	True	True	False	0.7	False	0.608458	False	ATP6AP2	False	False	A	1.0	A	56
+upstream_regulators	mTOR regulators	True	1.0	0.788551	52	0.0	R1	0.933876	4	True	False	True	True	False	0.7	False	0.480655	False	ATP6V1B2	True	False	A	1.0	A	57
+default	NAG; CMT2V; MPS3B; UFHSD; MPS-IIIB	True	1.1	0.787876	53	0.0	R1	0.507329	3	True	True	True	True	False	0.8	False	0.428571	False	NAGLU	False	False	A	1.0	A	58
+core_machinery	ATG8 Ubiquitin-like conjugation systems	True	1.1	0.78652	54	0.0	R1	0.648534	2	True	True	True	True	False	1.0	False	0.166667	False	GABARAPL2	False	False	A	1.0	A	59
+default	Negative Regulator of Autophagy	True	1.0	0.783028	55	0.0	R1	0.668078	5	True	False	True	False	False	0.8	False	0.464881	False	CAPN2	False	False	A	1.0	A	60
+core_machinery	Rab proteins involved in autophagosome formation	True	1.0	0.780253	56	-0.1	R1	0.551303	7	True	False	True	False	False	1.0	False	0.700491	True	RAB1A	True	False	A	1.0	A	61
+		True	1.0	0.7800825	677	0.0	R1b	0.245765	5	True	False	False	True	False	0.8	False	0.622024	False	CANX	False	True	A	1.0	A	62
+		True	1.0	0.7763684000000001	762	0.0	R1b	0.877524	3	True	False	False	False	False	0.85	False	0.304464	False	CDC37	False	True	A	1.0	A	63
+default		True	1.0	0.773331	68	0.0	R1	0.37101	5	True	False	True	True	False	0.8	False	0.54492	False	SMPD1	False	False	A	1.0	A	64
+default		True	1.0	0.773031	69	0.0	R1	0.058795	6	True	False	True	True	False	0.8	False	0.668605	False	MAN2B2	False	False	A	1.0	A	65
+mitophagy	Mitophagy core	True	1.0	0.768877	77	-0.1	R1	0.807492	7	True	False	True	True	False	0.85	True	0.702512	False	UBE2L3	False	False	A	1.0	A	66
+upstream_regulators	Positive regulator of Autophagy	True	1.0	0.766796	83	0.0	R1	0.278013	6	True	False	True	True	False	0.7	False	0.65598	False	TGM2	False	False	A	1.0	A	67
+		True	1.0	0.7628938000000001	769	0.0	R1b	0.871498	4	True	False	False	False	False	0.8	False	0.302976	False	IQGAP1	False	True	A	1.0	A	68
+default		True	1.1	0.762224	92	0.0	R1	0.750814	3	True	True	True	True	False	0.8	False	0.228571	False	GALC	False	False	A	1.0	A	69
+default	IDA; MPS1	True	1.0	0.760825	93	0.0	R1	0.666287	3	True	False	True	True	False	0.8	False	0.376786	False	IDUA	False	False	A	1.0	A	70
+default		True	1.1	0.760427	94	0.0	R1	0.530456	3	True	True	True	True	False	0.8	False	0.309524	False	NEU1	False	False	A	1.0	A	71
+default		True	1.0	0.757788	100	0.0	R1	0.787459	4	True	False	True	True	False	0.8	False	0.316168	False	GLA	False	False	A	1.0	A	72
+default		True	1.0	0.750466	112	0.0	R1	0.400489	4	True	False	True	True	False	0.8	False	0.441667	False	GALNS	False	False	A	1.0	A	73
+lysosomal	recruitment HOPS on lysosome	False	1.0	0.750074	114	0.0	R1	0.0	3	True	False	True	True	False	1.0	False	0.400298	False	ARL8B	False	False	A	1.0	A	74
+default		True	1.0	0.748253	119	0.0	R1	0.632085	3	True	False	True	True	False	0.8	False	0.340179	False	STX7	False	False	A	1.0	A	75
+default	Negative Regulator of Autophagy	True	1.0	0.748025	120	0.0	R1	0.765961	2	True	False	True	True	False	0.8	False	0.285714	False	CAPN1	False	False	A	1.0	A	76
+default	Negative Regulator of Autophagy	True	1.1	0.737342	132	0.0	R1	0.659283	5	False	True	True	True	False	0.8	False	0.565656	False	MST1	False	False	A	0.0	A	77
+default	ATAG1874	True	1.0	0.733777	141	0.0	R1	0.816938	2	True	False	True	True	False	0.8	False	0.208333	False	NCSTN	False	False	A	1.0	A	78
+upstream_regulators	mTOR regulators	True	1.0	0.733588	143	0.0	R1	0.843322	3	True	False	True	True	False	0.7	False	0.297024	False	ATP6V1H	True	False	A	1.0	A	79
+		True	0.7	0.727063	1306	0.0	R1b	0.90798	3	True	False	False	True	False	1.0	False	0.30506	False	TOLLIP	False	True	B	1.0	A	80
+upstream_regulators	Positive regulator of Autophagy	True	1.0	0.725146	160	0.0	R1	0.463518	3	True	False	True	True	False	0.7	False	0.415179	False	CAST	False	False	A	1.0	A	81
+default		True	1.1	0.720431	170	0.0	R1	0.404072	3	True	True	True	True	False	0.8	False	0.200097	False	ABCA2	False	False	A	1.0	A	82
+default		True	1.0	0.719093	173	0.0	R1	0.731107	3	True	False	True	True	False	0.8	False	0.183929	False	GUSB	False	False	A	1.0	A	83
+		True	0.8	0.71610045	1117	0.0	R1b	0.439577	4	True	True	False	True	False	0.85	False	0.478571	False	VDAC1	False	True	B	1.0	A	84
+upstream_regulators	Negative regulator of Autophagy genes	True	1.0	0.714036	185	0.0	R1	0.843485	2	True	False	True	False	False	0.7	False	0.21875	False	STAT1	False	False	A	1.0	A	85
+default		True	0.7	0.713018	189	0.0	R1	0.945114	5	True	False	True	False	False	0.8	False	0.434025	False	VPS35	True	False	B	1.0	A	86
+default		True	1.1	0.712779	190	0.0	R1	0.135831	2	True	True	True	True	False	0.8	False	0.276786	False	SIAE	False	False	A	1.0	A	87
+default		False	1.0	0.712048	194	0.0	R1	0.0	4	True	False	True	True	False	0.8	False	0.448194	False	ARSG	False	False	A	1.0	A	88
+default		True	1.0	0.710523	201	0.0	R1	0.701954	2	True	False	True	True	False	0.8	False	0.16131	False	CHID1	False	False	A	1.0	A	89
+upstream_regulators	AMPK activator	True	1.0	0.706336	207	0.0	R1	0.68241	3	True	False	True	True	False	0.7	False	0.252381	False	CAB39	True	False	A	1.0	A	90
+default	JP; HMS; JPD; PLS; CPPI; DPP1; DPPI; PALS; DPP-I; PDON1	True	1.1	0.705265	212	0.0	R1	0.392345	5	False	True	True	True	False	0.8	False	0.544124	False	CTSC	False	False	A	0.0	A	91
+		True	1.0	0.6985084500000001	1160	0.0	R1b	0.289902	3	True	False	False	True	False	0.8	False	0.278073	False	YIPF3	False	True	A	1.0	A	92
+upstream_regulators	mTOR regulators	True	1.0	0.685586	256	0.0	R1	0.209283	3	True	False	True	True	False	0.7	False	0.358631	False	NPC1	False	False	A	1.0	A	93
+upstream_regulators	Positive regulator of Autophagy	True	1.0	0.682318	264	0.0	R1	0.727199	2	True	False	True	False	False	0.7	False	0.138393	False	MYO6	False	False	A	1.0	A	94
+default		True	1.1	0.681843	265	-0.1	R1	0.201466	4	True	True	True	True	False	0.8	False	0.526786	True	RNASET2	False	False	A	1.0	A	95
+default	CESD, LAL	False	1.1	0.674643	293	0.0	R1	0.0	2	True	True	True	True	False	0.8	False	0.178571	False	LIPA	False	False	A	1.0	A	96
+core_machinery	ATG8 Ubiquitin-like conjugation systems	True	0.7	0.670953	304	0.0	R1	0.625896	3	True	False	True	False	False	1.0	False	0.193452	False	ATG3	False	False	B	1.0	A	97
+		True	0.7	0.6702846	1431	0.0	R1b	0.934691	2	True	False	False	False	False	0.85	False	0.217262	False	EIF2S1	False	True	B	1.0	A	98
+default	Fission	True	0.7	0.66849	309	0.0	R1	0.913029	3	True	False	True	True	False	0.8	False	0.26875	False	DNM1L	False	False	B	1.0	A	99
+upstream_regulators	Negative regulator of Autophagy genes	False	1.0	0.66426	326	0.0	R1	0.0	4	True	False	True	True	False	0.7	False	0.357039	False	BDNF	False	False	A	1.0	A	100
+		False	1.0	0.66277	1395	-0.1	R1b	0.0	6	True	False	False	True	False	0.8	False	0.65108	True	GFAP	True	True	A	1.0	A	101
+		True	0.7	0.6620868	1399	0.0	R1b	0.981433	2	True	False	False	False	False	0.8	False	0.215774	False	TSG101	False	True	B	1.0	A	102
+upstream_regulators	Positive regulator of Autophagy	True	0.7	0.661901	332	0.0	R1	0.771987	3	True	False	True	True	False	0.7	False	0.39881	False	RAB18	False	False	B	1.0	A	103
+core_machinery	Rab proteins involved in autophagosome formation	True	0.7	0.660384	334	-0.1	R1	0.93241	3	True	False	True	True	False	1.0	False	0.428571	True	RAB11B	False	False	B	1.0	A	104
+default	CTSO1	False	1.1	0.655664	354	0.0	R1	0.0	5	False	True	True	True	False	0.8	False	0.502658	False	CTSO	False	False	A	0.0	A	105
+		True	1.0	0.65134555	1472	0.0	R1b	0.202443	2	True	False	False	True	False	0.8	False	0.124405	False	ITPR1	False	True	A	1.0	A	106
+docking	Tethers, Adaptors	True	0.7	0.645861	384	0.0	R1	0.67557	3	True	False	True	False	False	0.85	False	0.223214	False	GORASP2	False	False	B	1.0	A	107
+upstream_regulators	Positive regulator of Autophagy genes	True	1.0	0.645007	385	-0.1	R1	0.945603	3	True	False	True	True	False	0.7	False	0.301786	True	MAPK1	False	False	A	1.0	A	108
+default		True	1.0	0.640451	408	0.0	R1	0.690228	2	False	False	True	True	False	0.8	False	0.285714	False	DNASE2	False	False	A	0.0	A	109
+upstream_regulators	mTOR regulators	True	0.7	0.633727	431	0.0	R1	0.940391	3	True	False	True	False	False	0.7	False	0.21875	False	ATP6V1E1	True	False	B	1.0	A	110
+docking	Fusion	True	0.7	0.632744	438	0.0	R1	0.700651	2	True	False	True	True	False	0.85	False	0.160714	False	OPA1	False	False	B	1.0	A	111
+upstream_regulators	mTOR complexes 1 and 2	True	1.0	0.632039	441	0.0	R1	0.481107	1	True	False	True	True	False	0.7	False	0.035714	False	TELO2	False	False	A	1.0	B	112
+core_machinery	Beclin1/PI3K complex interacting proteins	True	0.7	0.630734	452	0.0	R1	0.543648	1	True	False	True	True	False	1.0	False	0.065476	False	SH3GLB1	False	False	B	1.0	A	113
+upstream_regulators	mTOR regulators	True	0.7	0.617801	509	0.0	R1	0.81759	2	True	False	True	True	False	0.7	False	0.204167	False	ATP6V0A1	False	False	B	1.0	A	114
+upstream_regulators	mTOR regulators	True	0.7	0.616498	512	0.0	R1	0.84772	2	True	False	True	True	False	0.7	False	0.186905	False	ATP6V1C1	True	False	B	1.0	A	115
+default		False	1.0	0.616028	517	0.0	R1	0.0	5	False	False	True	True	False	0.8	False	0.464113	False	IFI30	False	False	A	0.0	A	116
+default		False	1.1	0.613259	531	0.0	R1	0.0	3	False	True	True	True	False	0.8	False	0.333036	False	HYAL1	False	False	A	0.0	A	117
+upstream_regulators	mTOR regulators	True	0.7	0.61204	538	0.0	R1	0.898371	2	True	False	True	True	False	0.7	False	0.14881	False	ATP6V1G1	False	False	B	1.0	A	118
+default	NCL	True	1.1	0.608771	557	0.0	R1	0.140391	2	False	True	True	True	False	0.8	False	0.258929	False	CLN5	False	False	A	0.0	A	119
+default		False	1.0	0.606696	563	0.0	R1	0.0	1	True	False	True	False	False	0.8	False	0.026786	False	ABCB9	False	False	A	1.0	B	120
+core_machinery	Cargo receptors for Selective Autophagy	True	0.7	0.597889	600	0.0	R1	0.222638	1	True	False	True	False	False	1.0	False	0.0625	False	TAX1BP1	False	False	B	1.0	A	121
+default		True	1.0	0.59615	605	0.0	R1	0.715961	1	False	False	True	True	False	0.8	False	0.098214	False	SGSH	False	False	A	0.0	A	122
+default	Negative Regulator of Autophagy	False	1.0	0.587176	644	-0.2	R1	0.0	7	True	False	True	True	False	0.8	True	0.748706	True	HSPA1A	True	False	A	1.0	A	123
+upstream_regulators	Candidate kinases required for basal Autophagy	False	1.0	0.585417	657	0.0	R1	0.0	1	True	False	True	True	False	0.7	False	0.041667	False	MARK4	False	False	A	1.0	A	124
+default		True	1.0	0.582141	667	0.0	R1	0.620521	1	False	False	True	True	False	0.8	False	0.080357	False	AGA	False	False	A	0.0	A	125
+mitophagy	Mitophagy core	False	1.0	0.572024	712	-0.1	R1	0.0	3	True	False	True	True	False	0.85	False	0.238095	True	UBE2D2	True	False	A	1.0	A	126
+upstream_regulators	mTOR regulators	True	0.7	0.569746	731	0.0	R1	0.668893	1	True	False	True	True	False	0.7	False	0.071429	False	LAMTOR1	False	False	B	1.0	A	127
+default	Cargo indirectly associated with ubiquitinated proteins or with LC3	False	0.7	0.563199	765	0.0	R1	0.0	2	True	False	True	True	False	0.8	False	0.212798	False	BAG3	False	False	B	1.0	A	128
+upstream_regulators	Candidate kinases required for basal Autophagy	True	1.0	0.551171	840	0.0	R1	0.44772	2	False	False	True	False	False	0.7	False	0.125595	False	PGK2	False	False	A	0.0	A	129
+upstream_regulators	Candidate kinases required for basal Autophagy	True	1.0	0.5482	863	0.0	R1	0.248371	2	False	False	True	True	False	0.7	False	0.193452	False	TIE1	False	False	A	0.0	A	130
+default	Negative Regulator of Autophagy	True	1.0	0.54132	908	-0.1	R1	0.249511	1	True	False	True	True	False	0.8	True	0.065476	False	GOLGA2	False	False	A	1.0	A	131
+upstream_regulators	Positive regulator of Autophagy	False	0.7	0.522946	1021	0.0	R1	0.0	2	True	False	True	True	False	0.7	False	0.151786	False	TMEM59	False	False	B	1.0	A	132
+default	DFNB2; MYU7A; NSRD2; USH1B; DFNA11; MYOVIIA	False	1.0	0.51994	1034	0.0	R1	0.0	2	False	False	True	False	False	0.8	False	0.079762	False	MYO7A	False	False	A	0.0	A	133
+upstream_regulators	mTOR regulators	False	0.7	0.518295	1046	-0.1	R1	0.0	6	True	False	True	True	False	0.7	False	0.533181	True	PPP2CA	True	False	B	1.0	A	134
+upstream_regulators	Positive regulator of Autophagy	True	0.7	0.507528	1092	-0.1	R1	0.451466	4	True	False	True	True	False	0.7	False	0.309524	True	PICALM	False	False	B	1.0	A	135
+upstream_regulators	Positive regulator of Autophagy genes	False	1.0	0.506063	1101	0.0	R1	0.0	2	False	False	True	True	False	0.7	False	0.124252	False	ATF6	False	False	A	0.0	A	136

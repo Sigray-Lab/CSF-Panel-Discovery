@@ -1,0 +1,15 @@
+rank	human_gene_symbol	composite_score	score_mouse_csf	score_human_csf	score_ev	score_brain	score_autophagy	penalties	n_mouse_csf_datasets	mouse_csf_best_tier	d11_tier	d12_validated	d10_detected	d6_brain_detected	d9_isf_detected	ev_present	in_r1	r1_category	r1_tier	is_ambiguous_group	orthology_ambiguous	likely_plasma_derived	original_score_autophagy	original_composite_score	r1b_tier	score_delta	in_r1b
+82	PSAP	1.0	0.985714	1.1	0.905537	1.0	1.0	0.0	7	A	A	True	True	True	True	True	False			False	False	False	0.0	0.766982	lysosomal	0.23301799999999995	True
+500	CLTC	0.8701501500000001	0.880731	1.0	0.999674	1.0	1.0	-0.1	7	A	A	True	False	True	True	True	False			True	False	False	0.0	0.62015	lysosomal	0.2500001500000001	True
+457	HSP90AA1	0.8291383	0.916944	1.0	0.999023	1.0	0.8	-0.1	7	A	A	True	False	True	True	True	False			True	False	False	0.0	0.629138	default	0.20000030000000002	True
+611	SKP1	0.80770275	0.660811	1.1	0.0	1.0	0.85	0.0	6	A	A	True	True	True	True	False	False			False	False	False	0.0	0.595203	mitophagy	0.21249975	True
+677	CANX	0.7800825	0.622024	1.0	0.245765	1.0	0.8	0.0	5	A	A	True	False	True	False	True	False			False	False	False	0.0	0.580082	default	0.20000050000000003	True
+762	CDC37	0.7763684000000001	0.304464	1.0	0.877524	1.0	0.85	0.0	3	A	A	False	False	True	False	True	False			False	False	False	0.0	0.563869	mitophagy	0.21249940000000012	True
+769	IQGAP1	0.7628938000000001	0.302976	1.0	0.871498	1.0	0.8	0.0	4	A	A	False	False	True	False	True	False			False	False	False	0.0	0.562894	default	0.19999980000000006	True
+1306	TOLLIP	0.727063	0.30506	0.7	0.90798	1.0	1.0	0.0	3	A	B	True	False	True	False	True	False			False	False	False	0.0	0.477063	core_machinery	0.25	True
+1117	VDAC1	0.71610045	0.478571	0.8	0.439577	1.0	0.85	0.0	4	A	B	True	True	True	False	True	False			False	False	False	0.0	0.503601	mitophagy	0.21249945000000003	True
+1160	YIPF3	0.6985084500000001	0.278073	1.0	0.289902	1.0	0.8	0.0	3	A	A	True	False	True	False	True	False			False	False	False	0.0	0.498509	default	0.19999945000000008	True
+1431	EIF2S1	0.6702846	0.217262	0.7	0.934691	1.0	0.85	0.0	2	A	B	False	False	True	False	True	False			False	False	False	0.0	0.457785	mitophagy	0.2124996	True
+1395	GFAP	0.66277	0.65108	1.0	0.0	1.0	0.8	-0.1	6	A	A	True	False	True	True	False	False			True	False	False	0.0	0.46277	default	0.19999999999999996	True
+1399	TSG101	0.6620868	0.215774	0.7	0.981433	1.0	0.8	0.0	2	A	B	False	False	True	False	True	False			False	False	False	0.0	0.462087	default	0.19999979999999995	True
+1472	ITPR1	0.65134555	0.124405	1.0	0.202443	1.0	0.8	0.0	2	A	A	True	False	True	False	True	False			False	False	False	0.0	0.451345	default	0.20000055000000005	True

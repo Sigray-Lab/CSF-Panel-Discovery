@@ -1,0 +1,464 @@
+# ============================================================
+# CSF Autophagy/Lysosome Panel Discovery Pipeline Configuration
+# ============================================================
+
+project:
+  name: "CSF_Autophagy_Lysosome_Panel"
+  version: "1.0"
+  random_seed: 42
+
+paths:
+  raw_dir: "../../raw"
+  derived_dir: "../DerivedData"
+  qc_dir: "../QC"
+  output_dir: "../Outputs"
+  log_dir: "../Log"
+
+# -----------------------------------------------------------
+# Dataset Registry
+# -----------------------------------------------------------
+datasets:
+  D1:
+    file: "The list of all identified proteins from lable-free MS of mouse CSF(Per).xlsx"
+    sheet: "All identified proteins"
+    format: "maxquant_fasta"
+    species: "mouse"
+    biofluid: "CSF"
+    role: "mouse_csf"
+    id_columns:
+      protein_ids: "Protein IDs"
+      majority_ids: "Majority protein IDs"
+      fasta_headers: "Fasta headers"
+    intensity_prefix: "LFQ intensity"
+    intensity_scale: "raw"
+    n_samples_expected: 12
+    notes: "Presence-only for scoring (weak label-free); gene via GN= regex on Fasta headers"
+
+  D2:
+    file: "Pooled datasets blasting overview.xlsx"
+    sheet: "mouse_csf_PXD053698"
+    format: "maxquant_preparsed"
+    species: "mouse"
+    biofluid: "CSF"
+    role: "mouse_csf"
+    id_columns:
+      gene_symbol: "gene_symbol"
+      uniprot_id: "uniprot_id"
+    intensity_prefix: "LFQ intensity"
+    intensity_scale: "raw"
+    n_samples_expected: 43
+    meta_columns: ["gene_symbol", "uniprot_id", "protein_name", "num_samples_detected", "mean_LFQ_intensity"]
+
+  D3:
+    file: "Pooled datasets blasting overview.xlsx"
+    sheet: "mouse_csf_PXD053568_5xFAD "
+    format: "maxquant_preparsed"
+    species: "mouse"
+    biofluid: "CSF"
+    role: "mouse_csf"
+    id_columns:
+      gene_symbol: "gene_symbol"
+      uniprot_id: "uniprot_id"
+    intensity_prefix: "LFQ intensity"
+    intensity_scale: "raw"
+    n_samples_expected: 10
+    meta_columns: ["gene_symbol", "uniprot_id", "protein_name", "num_samples_detected", "mean_LFQ_intensity"]
+    notes: "Sheet name has trailing space"
+
+  D4:
+    file: "Project PXD032782/APPPS1_BI_2_2Pep.xlsx"
+    sheet: "Sheet1"
+    format: "diann_excel"
+    species: "mouse"
+    biofluid: "CSF"
+    role: "mouse_csf"
+    id_columns:
+      protein_group: "Protein.Group"
+      protein_ids: "Protein.Ids"
+      genes: "Genes"
+    intensity_prefix: "LFQ intensity"
+    intensity_scale: "raw"
+    n_samples_expected: 32
+    meta_columns: ["Protein.Group", "Protein.Ids", "Protein.Names", "Genes", "First.Protein.Description"]
+    extra_column_prefixes_to_skip: ["Precursor", "Peptides"]
+    notes: "Use 2-peptide file; has LFQ + Precursor + Peptides columns; use LFQ only"
+
+  D5:
+    file: "Project PXD065438/Output_CSF-mk_Trem2/CSF-mk_Trem2.pg_matrix.tsv"
+    format: "diann_tsv"
+    species: "mouse"
+    biofluid: "CSF"
+    role: "mouse_csf"
+    id_columns:
+      protein_group: "Protein.Group"
+      genes: "Genes"
+    intensity_scale: "raw"
+    n_samples_expected: 15
+    meta_columns: ["Protein.Group", "Protein.Names", "Genes", "First.Protein.Description"]
+    notes: "No Protein.Ids column; sample cols are Windows file paths"
+
+  D6:
+    file: "Project PXD065438/Output_Brain-mk_Trem2/AGCH2501_brain.pg_matrix.tsv"
+    format: "diann_tsv"
+    species: "mouse"
+    biofluid: "brain"
+    role: "brain_plausibility"
+    id_columns:
+      protein_group: "Protein.Group"
+      genes: "Genes"
+    intensity_scale: "raw"
+    n_samples_expected: 15
+    meta_columns: ["Protein.Group", "Protein.Names", "Genes", "First.Protein.Description"]
+
+  D7:
+    file: "Project PXD052590/report.pg_matrix.tsv"
+    format: "diann_tsv"
+    species: "mouse"
+    biofluid: "CSF"
+    role: "mouse_csf"
+    id_columns:
+      protein_group: "Protein.Group"
+      protein_ids: "Protein.Ids"
+      genes: "Genes"
+    intensity_scale: "raw"
+    n_samples_expected: 20
+    meta_columns: ["Protein.Group", "Protein.Ids", "Protein.Names", "Genes", "First.Protein.Description"]
+
+  D8:
+    file: "Project PXD048864/report.pg_matrix_CSF.tsv"
+    format: "diann_tsv"
+    species: "mouse"
+    biofluid: "CSF"
+    role: "mouse_csf"
+    id_columns:
+      protein_group: "Protein.Group"
+      protein_ids: "Protein.Ids"
+      genes: "Genes"
+    intensity_scale: "raw"
+    n_samples_expected: 49
+    meta_columns: ["Protein.Group", "Protein.Ids", "Protein.Names", "Genes", "First.Protein.Description"]
+
+  D9:
+    file: "Pooled datasets blasting overview.xlsx"
+    sheet: "mouse_isf_PDX048864"
+    format: "diann_excel"
+    species: "mouse"
+    biofluid: "ISF"
+    role: "isf_plausibility"
+    id_columns:
+      protein_group: "Protein.Group"
+      protein_ids: "Protein.Ids"
+      genes: "Genes"
+    intensity_scale: "raw"
+    n_samples_expected: 47
+    meta_columns: ["Protein.Group", "Protein.Ids", "Protein.Names", "Genes", "First.Protein.Description"]
+    notes: "2 completely empty sample columns to auto-detect and exclude"
+
+  D10:
+    file: "Pooled datasets blasting overview.xlsx"
+    sheet: "human_csf_PXD053698"
+    format: "maxquant_preparsed"
+    species: "human"
+    biofluid: "CSF"
+    role: "human_csf_supporting"
+    id_columns:
+      gene_symbol: "gene_symbol"
+      uniprot_id: "uniprot_id"
+    intensity_prefix: "LFQ intensity"
+    intensity_scale: "raw"
+    n_samples_expected: 8
+    meta_columns: ["gene_symbol", "uniprot_id", "protein_name", "num_samples_detected", "mean_LFQ_intensity"]
+
+  D11:
+    file: "Project Astral/Astral protome_discovery and repliction_DACboth013_49D_1_7_3_Sc01.tsv"
+    format: "diann_astral"
+    species: "human"
+    biofluid: "CSF"
+    role: "human_csf_primary"
+    id_columns:
+      protein: "protein"
+      protein_group: "Protein.Group"
+      genes: "Genes"
+    intensity_scale: "log2"
+    n_samples_expected: 2720
+    meta_columns: ["protein", "Protein.Group", "Protein.Names", "Genes"]
+    notes: "Primary human CSF evidence; log2 intensities; 3232 proteins"
+
+  D12:
+    file: "Project Astral/Astral proteome_repliction only_DACRP014_49D_1_7_2_Sc03.tsv"
+    format: "diann_astral"
+    species: "human"
+    biofluid: "CSF"
+    role: "human_csf_validation"
+    id_columns:
+      protein: "protein"
+      protein_group: "Protein.Group"
+      genes: "Genes"
+    intensity_scale: "log2"
+    n_samples_expected: 643
+    precomputed_stats:
+      median: "abundance_median_Astral"
+      rank: "abundance_rank_Astral"
+      observations: "observations_Astral"
+      completeness: "data_completeness_Astral"
+    meta_columns: ["protein", "Protein.Group", "Protein.Names", "Genes",
+                    "abundance_median_Astral", "abundance_rank_Astral",
+                    "observations_Astral", "data_completeness_Astral"]
+    notes: "Validation only; never count as independent evidence"
+
+  EV:
+    file: "WT vs KO EV protein list from highest to lowest abundance.xlsx"
+    format: "ev_rank"
+    species: "human_cell_line"
+    biofluid: "EV"
+    role: "ev_annotation"
+    sheets:
+      raw: "Raw list Lovisa"  # NB: literal Excel sheet name in the source file
+      precomputed: "330 after blast with full"
+      overlap: "Overlap detection"
+    notes: "Rank-ordered gene symbols; annotation only (weight 0.05)"
+
+# -----------------------------------------------------------
+# Reference Inputs
+# -----------------------------------------------------------
+references:
+  R1:
+    file: "Full list with autophagy proteins curated.xlsx"
+    deduplicated_sheet: "Sheet1"
+    full_sheet: "Full list"
+    columns:
+      gene_symbol: "Official Gene symbol"
+      alias: "Alias (optional)"
+      category: "Biological Function"
+      description: "Description"
+      refs: "Refs"
+
+  R2:
+    file: "Pooled datasets blasting overview.xlsx"
+    sheet: "Overview"
+    columns:
+      antibody: "Antibody"
+      gene_symbol: "GeneSymbol"
+      abbreviation: "Abbreviation"
+
+# -----------------------------------------------------------
+# Evidence Score Weights
+# -----------------------------------------------------------
+scoring:
+  weights:
+    mouse_csf: 0.25
+    human_csf: 0.30
+    ev: 0.10
+    brain_plausibility: 0.10
+    autophagy_membership: 0.25
+
+  penalties:
+    ambiguous_group_unresolved: -0.10
+    orthology_ambiguous_unresolved: -0.10
+    likely_plasma_derived: -0.20
+
+  human_csf_tier_scores:
+    A: 1.0
+    B: 0.7
+    C: 0.3
+    absent: 0.0
+
+  d10_bonus: 0.1
+
+  autophagy_category_modifiers:
+    core_machinery: 1.0
+    lysosomal: 1.0
+    mitophagy: 0.85
+    docking: 0.85
+    upstream_regulators: 0.70
+    default: 0.80
+
+  mouse_csf_datasets: ["D1", "D2", "D3", "D4", "D5", "D7", "D8"]
+
+# -----------------------------------------------------------
+# Detectability Tier Definitions
+# -----------------------------------------------------------
+detectability:
+  small_dataset_threshold: 20
+  tiers:
+    A:
+      small:
+        min_detected: 2
+        above_floor: true
+      large:
+        min_fraction: 0.10
+        above_floor: true
+    B:
+      small:
+        min_detected: 1
+        above_floor: true
+      large:
+        min_fraction: 0.02
+        above_floor: false
+    C:
+      small:
+        min_detected: 1
+        above_floor: false
+      large:
+        min_detected: 1
+        above_floor: false
+
+  intensity_floor_percentile: 10
+
+# -----------------------------------------------------------
+# Protein Group Handling
+# -----------------------------------------------------------
+protein_groups:
+  ambiguous_handling: "expand"
+
+# -----------------------------------------------------------
+# Plasma Protein Flagging
+# -----------------------------------------------------------
+plasma_proteins:
+  built_in:
+    - ALB
+    - HBA1
+    - HBA2
+    - HBB
+    - FGA
+    - FGB
+    - FGG
+    - C3
+    - C4A
+    - C4B
+    - C5
+    - C6
+    - C7
+    - C8A
+    - C8B
+    - C8G
+    - C9
+    - APOA1
+    - APOB
+    - APOC1
+    - APOC2
+    - APOC3
+    - APOE
+    - TF
+    - A2M
+    - HP
+  patterns:
+    - "^IGH"
+    - "^IGL"
+    - "^IGK"
+    - "^KRT"
+  external_list: null
+
+# -----------------------------------------------------------
+# Contaminant Removal
+# -----------------------------------------------------------
+contaminants:
+  maxquant_prefixes: ["REV__", "CON__"]
+
+# -----------------------------------------------------------
+# Peptide Feasibility (Step 5)
+# -----------------------------------------------------------
+peptide_feasibility:
+  missed_cleavages: [0, 1, 2]
+  peptide_length_min: 7
+  peptide_length_max: 25
+  top_n_candidates: 200
+  tiers:
+    I:
+      min_conserved_proteotypic: 2
+    II:
+      min_human_proteotypic: 1
+    III:
+      description: "No good proteotypic peptides"
+
+# -----------------------------------------------------------
+# Module Validation (Step 6)
+# -----------------------------------------------------------
+modules:
+  dataset: "D11"
+  min_completeness: 0.30
+  method: "correlation_clustering"
+  min_module_size: 20
+  enrichment_test: "hypergeometric"
+  imputation: "half_min"
+
+# -----------------------------------------------------------
+# Sensitivity Analysis (Step 7)
+# -----------------------------------------------------------
+sensitivity:
+  tier_options: ["A", "AB", "ABC"]
+  group_handling_options: ["expand", "exclude"]
+  weight_sets:
+    default:
+      mouse_csf: 0.25
+      human_csf: 0.30
+      ev: 0.05
+      brain_plausibility: 0.10
+      autophagy_membership: 0.25
+    equal:
+      mouse_csf: 0.19
+      human_csf: 0.19
+      ev: 0.19
+      brain_plausibility: 0.19
+      autophagy_membership: 0.19
+    csf_heavy:
+      mouse_csf: 0.30
+      human_csf: 0.40
+      ev: 0.05
+      brain_plausibility: 0.05
+      autophagy_membership: 0.15
+  null_simulation:
+    n_iterations: 1000
+    proteome_size: 20000
+    gene_set_size: 604
+    seed: 42
+
+# -----------------------------------------------------------
+# Core Panel Selection
+# -----------------------------------------------------------
+core_panel:
+  min_size: 30
+  max_size: 80
+  require_human_csf_tier: ["A", "B"]
+  require_mouse_csf_tier: ["A", "B"]
+  require_r1: true
+  exclude_plasma: true
+  require_ev: false
+
+# -----------------------------------------------------------
+# AD Model Cross-Check (Step 8)
+# -----------------------------------------------------------
+ad_model:
+  file: "Table S3 Alterations in proteins identifed in all samples of AppNL-G-F NL-G-F vs Appwt wt.xlsx"
+  comparisons:
+    - sheet: "AppNL-G-F vs Appwt"
+      label: "AppNLGF_vs_WT"
+    - sheet: "AppNL-F vs Appwt"
+      label: "AppNLF_vs_WT"
+    - sheet: "AppNL-F vs AppNL-G-F"
+      label: "AppNLF_vs_AppNLGF"
+  significance_threshold: 0.05
+
+# -----------------------------------------------------------
+# Supplementary Gene Lists (Step 10)
+# -----------------------------------------------------------
+# Reusable: add new entries here as curated lists grow over time.
+supplementary_gene_lists:
+  R1b_edison_cosmos:
+    file: "novel_candidates_INCLUDE_56_extra_from_Edison_Cosmos_run.xlsx"
+    label: "R1b - Edison/Cosmos 2026-02"
+    description: "56 novel autophagy genes + 9 HADb core proteins from systematic database search"
+    sheets:
+      all_candidates: "All Extra Candidates"
+      hadb_core: "9 HADb Core - Missing from List"
+    gene_symbol_column: "Gene Symbol"
+    hadb_category_column: "Category"
+
+# -----------------------------------------------------------
+# Output Preferences
+# -----------------------------------------------------------
+output:
+  figure_format: "pdf"
+  figure_dpi: 300
+  tsv_separator: "\t"
+  write_intermediates: true

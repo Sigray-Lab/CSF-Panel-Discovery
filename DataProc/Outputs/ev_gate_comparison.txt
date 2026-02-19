@@ -1,0 +1,144 @@
+======================================================================
+EV HARD-GATE SENSITIVITY ANALYSIS
+Generated: 2026-02-17 07:20:17
+======================================================================
+
+QUESTION: What if ev_present=True is a hard gate for core panel?
+
+──────────────────────────────────────────────────
+GATE CASCADE (cumulative filtering)
+──────────────────────────────────────────────────
+  All candidates:                    9561
+  After G1 (human CSF tier A/B):     3026
+  After G2 (mouse CSF tier A/B):     2189
+  After G3 (in_r1=True):             122
+  After G4 (not plasma-derived):     122  ← current pipeline
+  After G5 (ev_present=True):        102  ← with EV gate
+  Shortlist (top 80):               80
+
+  Proteins lost by adding EV gate:   20 (122 → 102)
+
+──────────────────────────────────────────────────
+SUMMARY
+──────────────────────────────────────────────────
+  Retained in top 80:   74 proteins
+  Dropped from top 80:  6 proteins
+  Gained into top 80:   6 proteins
+
+──────────────────────────────────────────────────
+PROTEINS DROPPED FROM TOP 80 (lost EV gate)
+──────────────────────────────────────────────────
+Gene          Curr Rank   Score Category                   EV Incl
+----------------------------------------------------------------------
+CPQ                   9   0.926 plasma glutamate carbox     N    9
+CTSS                 23   0.872 none                        N    6
+CTSZ                 25   0.870 CTSX                        N    6
+CTBS                 34   0.845 nan                         N    6
+ARL8B               114   0.750 recruitment HOPS on lys     N    3
+ARSG                194   0.712 nan                         N    0
+
+──────────────────────────────────────────────────
+PROTEINS GAINED INTO TOP 80 (replace dropped)
+──────────────────────────────────────────────────
+Gene           New Rank   Score Category                   EV Incl
+----------------------------------------------------------------------
+CAB39               207   0.706 AMPK activator              Y    0
+CTSC                212   0.705 JP; HMS; JPD; PLS; CPPI     Y    0
+NPC1                256   0.686 mTOR regulators             Y    0
+MYO6                264   0.682 Positive regulator of A     Y    0
+RNASET2             265   0.682 nan                         Y    0
+ATG3                304   0.671 ATG8 Ubiquitin-like con     Y    0
+
+──────────────────────────────────────────────────
+RANK SHIFTS (retained proteins, sorted by current rank)
+──────────────────────────────────────────────────
+Gene          Curr   New  Shift   Score
+---------------------------------------------
+CTSD             1     1      =   1.000
+CTSB             2     2      =   0.975
+CST3             3     3      =   0.974
+PRDX6            4     4      =   0.973
+PARK7            5     5      =   0.970
+HEXB             6     6      =   0.964
+GGH              7     7      =   0.948
+GAA              8     8      =   0.947
+LAMP1            9     9      =   0.941
+ATP6AP1         11    10     ↑1   0.921
+NPC2            12    11     ↑1   0.920
+EPDR1           13    12     ↑1   0.910
+GM2A            14    13     ↑1   0.908
+MAN2B1          15    14     ↑1   0.903
+PPT1            16    15     ↑1   0.901
+IDS             17    16     ↑1   0.898
+HEXA            18    17     ↑1   0.897
+PRDX5           19    18     ↑1   0.894
+CTSA            20    19     ↑1   0.887
+TPP1            21    20     ↑1   0.885
+CSTB            22    21     ↑1   0.882
+LAMP2           23    22     ↑1   0.875
+CTSF            25    23     ↑2   0.872
+GNS             27    24     ↑3   0.868
+LGMN            28    25     ↑3   0.867
+UBE2N           29    26     ↑3   0.859
+RAB7A           30    27     ↑3   0.858
+PCYOX1          31    28     ↑3   0.853
+VCP             32    29     ↑3   0.851
+CTSH            33    30     ↑3   0.849
+PLBD2           34    31     ↑3   0.848
+ASAH1           36    32     ↑4   0.844
+ARSB            37    33     ↑4   0.842
+MANBA           38    34     ↑4   0.839
+PRCP            39    35     ↑4   0.837
+RAB5C           40    36     ↑4   0.837
+SQSTM1          41    37     ↑4   0.836
+RAB14           42    38     ↑4   0.835
+FUCA1           43    39     ↑4   0.832
+CAPNS1          44    40     ↑4   0.824
+GLB1            45    41     ↑4   0.818
+SCPEP1          46    42     ↑4   0.817
+ITM2C           47    43     ↑4   0.810
+NAGA            48    44     ↑4   0.808
+ACP2            49    45     ↑4   0.808
+ATP6V1A         50    46     ↑4   0.799
+RAB4B           51    47     ↑4   0.798
+ATP6AP2         52    48     ↑4   0.790
+ATP6V1B2        53    49     ↑4   0.789
+NAGLU           54    50     ↑4   0.788
+GABARAPL2       55    51     ↑4   0.787
+CAPN2           56    52     ↑4   0.783
+RAB1A           57    53     ↑4   0.780
+SMPD1           58    54     ↑4   0.773
+MAN2B2          59    55     ↑4   0.773
+UBE2L3          60    56     ↑4   0.769
+TGM2            61    57     ↑4   0.767
+GALC            62    58     ↑4   0.762
+IDUA            63    59     ↑4   0.761
+NEU1            64    60     ↑4   0.760
+GLA             65    61     ↑4   0.758
+GALNS           66    62     ↑4   0.750
+STX7            68    63     ↑5   0.748
+CAPN1           69    64     ↑5   0.748
+MST1            70    65     ↑5   0.737
+NCSTN           71    66     ↑5   0.734
+ATP6V1H         72    67     ↑5   0.734
+CAST            73    68     ↑5   0.725
+ABCA2           74    69     ↑5   0.720
+GUSB            75    70     ↑5   0.719
+STAT1           76    71     ↑5   0.714
+VPS35           77    72     ↑5   0.713
+SIAE            78    73     ↑5   0.713
+CHID1           80    74     ↑6   0.711
+
+──────────────────────────────────────────────────
+AD MODEL OVERLAP (dropped proteins)
+──────────────────────────────────────────────────
+  CPQ          sig_in=1/3 AD model comparisons
+    ⚠  This protein shows significant AD-related changes — dropping it may lose disease relevance
+  CTSS         sig_in=1/3 AD model comparisons
+    ⚠  This protein shows significant AD-related changes — dropping it may lose disease relevance
+  CTSZ         sig_in=2/3 AD model comparisons
+    ⚠  This protein shows significant AD-related changes — dropping it may lose disease relevance
+
+======================================================================
+END OF REPORT
+======================================================================

@@ -1,0 +1,10 @@
+human_gene_symbol	module_id	module_connectivity	composite_score	rank	n_mouse_csf_datasets	mouse_csf_best_tier	d11_tier	d12_validated	d10_detected	d6_brain_detected	ev_present	likely_plasma_derived	feasibility_tier	n_conserved_proteotypic
+SELENBP1	824	0.5447746687687596	0.569078	609	7	A	A	True	True	True	False	False		
+LGALS3BP	824	0.5315604293720098	0.720179	92	7	A	A	True	True	True	True	False		
+ADGRL1	824	0.5312559389218444	0.552777	697	4	A	A	True	False	True	True	False		
+GOT1	824	0.5234116134369127	0.719503	93	7	A	A	True	True	True	True	False		
+AEBP1	949	0.5118046863818102	0.550632	716	5	A	A	True	True	False	True	False		
+DCN	949	0.510603967880536	0.62765	343	7	A	A	True	True	True	False	False		
+F5	949	0.4990516907070626	0.587593	504	6	A	A	True	True	False	True	False		
+COL14A1	949	0.4745502777114312	0.375238	1913	3	A	A	True	True	False	False	False		
+CPVL	949	0.4721229586042988	0.363762	2013	0	absent	A	True	True	False	True	False		
