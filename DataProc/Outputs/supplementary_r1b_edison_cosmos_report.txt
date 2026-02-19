@@ -2,7 +2,7 @@
 SUPPLEMENTARY GENE SCORING REPORT
 List: R1b - Edison/Cosmos 2026-02
   56 novel autophagy genes + 9 HADb core proteins from systematic database search
-Generated: 2026-02-19 16:46:04
+Generated: 2026-02-19 19:40:30
 ======================================================================
 
 --------------------------------------------------
@@ -64,18 +64,18 @@ UBB              0.512   0.300  +0.212 mitophagy               A absent    N    
 GBA1             0.475   0.225  +0.250 lysosomal            absent      A    Y      Y
 VPS13C           0.465   0.215  +0.250 lysosomal            absent      A    Y      Y
 HUWE1            0.459   0.246  +0.212 mitophagy            absent      A    Y      Y
-CUL1             0.442   0.229  +0.213 mitophagy            absent      A    Y      Y
+CUL1             0.442   0.229  +0.212 mitophagy            absent      A    Y      Y
 ANKFY1           0.435   0.235  +0.200 default              absent      A    Y      Y
 WDR81            0.431   0.181  +0.250 lysosomal            absent      B    Y      Y
-OGT              0.424   0.212  +0.213 mitophagy            absent      A    Y      Y
+OGT              0.424   0.212  +0.212 mitophagy            absent      A    Y      Y
 HTT              0.424   0.212  +0.212 mitophagy            absent      A    Y      Y
 CHMP2B           0.421   0.171  +0.250 lysosomal            absent      A    Y      Y
 EIF4E            0.419   0.244  +0.175 upstream_regulators  absent      A    Y      Y
 VPS28            0.416   0.216  +0.200 default              absent      A    Y      Y
 PGAM5            0.413   0.201  +0.212 mitophagy            absent      A    Y      Y
-HK2              0.400   0.187  +0.213 mitophagy            absent absent    Y      Y
+HK2              0.400   0.187  +0.212 mitophagy            absent absent    Y      Y
 PIKFYVE          0.399   0.149  +0.250 lysosomal            absent      A    Y      Y
-FKBP8            0.389   0.177  +0.213 mitophagy            absent      A    Y      Y
+FKBP8            0.389   0.177  +0.212 mitophagy            absent      A    Y      Y
 TECPR2           0.381   0.131  +0.250 core_machinery       absent absent    Y      Y
 RAB39B           0.367   0.167  +0.200 default              absent      A    Y      Y
 TMEM41B          0.356   0.106  +0.250 core_machinery       absent      A    N      Y
@@ -91,7 +91,7 @@ VAMP8            0.336   0.124  +0.212 docking              absent      A    N  
 MTMR14           0.333   0.133  +0.200 default              absent      B    Y      Y
 YIPF4            0.331   0.131  +0.200 default              absent absent    Y      Y
 MTMR3            0.324   0.124  +0.200 default              absent      B    Y      Y
-PARL             0.319   0.107  +0.213 mitophagy            absent      B    N      Y
+PARL             0.319   0.107  +0.212 mitophagy            absent      B    N      Y
 BAD              0.313   0.113  +0.200 default              absent      A    N      Y
 AKAP11           0.300   0.100  +0.200 default              absent absent    N      Y
 TIMM23           0.230   0.017  +0.212 mitophagy            absent      A    N      Y

@@ -229,6 +229,13 @@ def rescore_genes(
     df["score_delta"] = df["composite_score"] - df["original_composite_score"]
     df["in_r1b"] = True
 
+    # Clean floating-point display artefacts
+    for col in ["composite_score", "original_composite_score", "score_delta",
+                "score_human_csf", "score_mouse_csf", "score_ev",
+                "score_brain", "score_autophagy", "penalties"]:
+        if col in df.columns:
+            df[col] = df[col].round(6)
+
     df = df.sort_values("composite_score", ascending=False).reset_index(drop=True)
     return df, not_detected
 
@@ -284,15 +291,51 @@ def build_combined_ranking(
     new = r1b_qualified.copy()
     new["source"] = "R1b"
 
-    # Use only columns present in both
-    common_cols = list(set(orig.columns) & set(new.columns))
+    # Define explicit column order for a clean, readable output
+    _PRIORITY_COLS = [
+        "human_gene_symbol",
+        "composite_score",
+        "source",
+        "d11_tier",
+        "mouse_csf_best_tier",
+        "score_human_csf",
+        "score_mouse_csf",
+        "score_ev",
+        "score_brain",
+        "score_autophagy",
+        "ev_present",
+        "d6_brain_detected",
+        "n_mouse_csf_datasets",
+        "d10_detected",
+        "d12_validated",
+        "d9_isf_detected",
+        "likely_plasma_derived",
+        "in_r1",
+        "in_r1b",
+        "penalties",
+        "is_ambiguous_group",
+        "orthology_ambiguous",
+    ]
+
+    # Columns present in both dataframes, in defined order
+    common_cols = list(orig.columns.intersection(new.columns))
+    ordered_cols = [c for c in _PRIORITY_COLS if c in common_cols]
+    # Append any remaining common columns not in our priority list
+    ordered_cols += [c for c in common_cols if c not in ordered_cols]
+
     combined = pd.concat(
-        [orig[common_cols], new[common_cols]], ignore_index=True
+        [orig[ordered_cols], new[ordered_cols]], ignore_index=True
     )
     combined = combined.sort_values(
         "composite_score", ascending=False
     ).reset_index(drop=True)
     combined["combined_rank"] = range(1, len(combined) + 1)
+
+    # Clean up floating-point display artefacts
+    for col in ["composite_score", "score_human_csf", "score_mouse_csf",
+                "score_ev", "score_brain", "score_autophagy", "penalties"]:
+        if col in combined.columns:
+            combined[col] = combined[col].round(6)
 
     return combined
 
