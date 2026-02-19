@@ -43,8 +43,8 @@ Hard gates (D11 tier A/B, mouse CSF tier A/B, R1 membership, plasma exclusion) f
 
 ```bash
 # Clone the repository
-git clone https://github.com/Sigray-Lab/CSF_panel_project.git
-cd CSF_panel_project
+git clone https://github.com/Sigray-Lab/CSF-Panel-Discovery.git
+cd CSF-Panel-Discovery
 
 # Create conda environment
 conda env create -f DataProc/Scripts/environment.yml
