@@ -14,7 +14,7 @@ The pipeline scores ~9,500 proteins across five evidence axes:
 | Brain plausibility | 0.10 | Mouse brain lysate (D6) |
 | Autophagy membership | 0.25 | Curated autophagy/lysosome gene list (R1, 599 genes) |
 
-Hard gates (D11 tier A/B, mouse CSF tier A/B, R1 membership, plasma exclusion) filter candidates down to a **122-protein core panel** and a **top-80 shortlist**.
+Hard gates (D11 tier A/B, mouse CSF tier A/B, R1 membership, plasma exclusion) filter candidates down to a **122-protein core panel** and a **top-80 shortlist**. A supplementary scoring module (Step 10) allows additional curated gene lists to be scored against the existing evidence, adding **14 R1b candidates** for a **136-protein combined ranking**.
 
 ## Pipeline steps
 
@@ -90,6 +90,9 @@ CSF_panel_project/
 - `Outputs/candidates_ranked.tsv` — All ~9,500 scored proteins with full evidence breakdown
 - `Outputs/core_panel_shortlist.tsv` — Top 80 shortlisted proteins (pass all hard gates)
 - `Outputs/master_pipeline_list.tsv` — 139 master list (122 core + 17 human-only additions)
+- `Outputs/supplementary_r1b_*_combined_ranking.tsv` — 136 combined ranking (122 R1 + 14 R1b)
+- `Outputs/supplementary_r1b_*_core_qualified.tsv` — R1b genes passing all hard gates
+- `Outputs/supplementary_r1b_*_report.txt` — Human-readable supplementary scoring summary
 - `Outputs/figures/` — Publication-ready PDF figures
 - `Outputs/methods_draft.md` — Methods section draft
 
