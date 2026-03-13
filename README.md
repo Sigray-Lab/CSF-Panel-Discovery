@@ -1,6 +1,8 @@
-# CSF Autophagy & Lysosome Biomarker Panel Discovery
+# [CSF Autophagy & Lysosome Biomarker Panel Discovery](https://sigraylab.com/csf-panel.html)
 
 A reproducible, config-driven proteomics pipeline that identifies and ranks **cerebrospinal fluid (CSF)-detectable markers of secretory autophagy and lysosomal function** with cross-species translation, integrating **12 mass-spectrometry datasets across ~3,600 samples**.
+
+📊 **[Presentation with key takeaways](https://sigraylab.com/csf-panel.html)**
 
 > **Which autophagy and lysosomal proteins can we reliably measure in CSF across both mouse and human?**
 >
