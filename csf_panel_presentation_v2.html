@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSF Autophagy/Lysosome Panel Discovery</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0F1A;
+    --surface: #131829;
+    --surface-hover: #1a2035;
+    --text: #E8ECF4;
+    --text-dim: #8B95AD;
+    --accent: #4ECDC4;
+    --accent-warm: #FF6B6B;
+    --accent-gold: #F0C674;
+    --accent-blue: #5B9BD5;
+    --border: rgba(78, 205, 196, 0.15);
+    --gradient-1: linear-gradient(135deg, #4ECDC4 0%, #5B9BD5 100%);
+    --gradient-2: linear-gradient(135deg, #FF6B6B 0%, #F0C674 100%);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .deck { width: 100vw; height: 100vh; position: relative; }
+
+  .slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5vh 8vw;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  .slide.active { opacity: 1; pointer-events: all; }
+  .slide.active .animate-in { animation: fadeUp 0.6s ease forwards; }
+  .slide.active .animate-in:nth-child(1) { animation-delay: 0.05s; }
+  .slide.active .animate-in:nth-child(2) { animation-delay: 0.15s; }
+  .slide.active .animate-in:nth-child(3) { animation-delay: 0.25s; }
+  .slide.active .animate-in:nth-child(4) { animation-delay: 0.3s; }
+  .slide.active .animate-in:nth-child(5) { animation-delay: 0.35s; }
+  .slide.active .animate-in:nth-child(6) { animation-delay: 0.4s; }
+  .slide.active .animate-in:nth-child(7) { animation-delay: 0.45s; }
+  .slide.active .animate-in:nth-child(8) { animation-delay: 0.5s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem, 4.5vw, 4rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.2rem;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.6rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    opacity: 0;
+  }
+
+  p, li {
+    font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+    line-height: 1.65;
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+
+  .lead {
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.55;
+    max-width: 48em;
+  }
+
+  strong { color: var(--text); font-weight: 500; }
+  .hl { color: var(--accent); font-weight: 500; }
+  .hl-warm { color: var(--accent-warm); font-weight: 500; }
+  .hl-gold { color: var(--accent-gold); font-weight: 500; }
+  .hl-blue { color: var(--accent-blue); font-weight: 500; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3vw; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2vw; align-items: start; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.6rem;
+    opacity: 0;
+  }
+
+  .card h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+  }
+
+  .card p, .card li { font-size: 0.9rem; line-height: 1.55; }
+
+  .card ul { list-style: none; padding: 0; }
+  .card ul li { padding: 0.25rem 0; padding-left: 1rem; position: relative; }
+  .card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.65rem;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .stat-row { display: flex; gap: 2vw; flex-wrap: wrap; margin: 1rem 0; }
+
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem 1.6rem;
+    min-width: 140px;
+    opacity: 0;
+  }
+
+  .stat .number {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat .label {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  .mini-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    margin-top: 0.5rem;
+  }
+
+  .mini-table th {
+    text-align: left;
+    padding: 0.4rem 0.6rem;
+    font-weight: 600;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .mini-table td {
+    padding: 0.32rem 0.6rem;
+    color: var(--text-dim);
+    border-bottom: 1px solid rgba(78, 205, 196, 0.06);
+  }
+
+  .mini-table tr:last-child td { border-bottom: none; }
+
+  .mini-table .protein-name {
+    color: var(--text);
+    font-weight: 500;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+  }
+
+  .score-bar {
+    display: inline-block;
+    height: 5px;
+    border-radius: 3px;
+    background: var(--gradient-1);
+    vertical-align: middle;
+    margin-right: 0.4rem;
+  }
+
+  .pipeline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin: 1.5rem 0;
+  }
+
+  .pipe-step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.55rem 0.7rem;
+    text-align: center;
+    opacity: 0;
+    min-width: 0;
+    flex: 0 1 auto;
+  }
+
+  .pipe-step .step-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .pipe-step .step-name { font-size: 0.72rem; font-weight: 500; color: var(--text); line-height: 1.3; }
+  .pipe-arrow { color: var(--text-dim); font-size: 0.85rem; padding: 0 0.15rem; opacity: 0; }
+
+  .tier {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+  .tier-a { background: rgba(78, 205, 196, 0.15); color: var(--accent); }
+  .tier-b { background: rgba(240, 198, 116, 0.15); color: var(--accent-gold); }
+  .tier-i { background: rgba(78, 205, 196, 0.15); color: var(--accent); }
+  .tier-ii { background: rgba(240, 198, 116, 0.15); color: var(--accent-gold); }
+
+  .nav {
+    position: fixed;
+    bottom: 2vh; right: 3vw;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 100;
+  }
+
+  .nav button {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: all 0.2s;
+  }
+
+  .nav button:hover { background: var(--surface-hover); color: var(--text); border-color: var(--accent); }
+
+  .slide-counter {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+
+  .progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    background: var(--gradient-1);
+    transition: width 0.4s ease;
+    z-index: 100;
+  }
+
+  .title-slide { justify-content: flex-end; padding-bottom: 12vh; }
+  .title-slide h1 { font-size: clamp(2.8rem, 5vw, 4.5rem); max-width: 16em; }
+
+  .title-meta { font-size: 0.95rem; color: var(--text-dim); margin-top: 1rem; font-weight: 300; }
+
+  .title-decoration {
+    position: absolute;
+    top: 8vh; right: 8vw;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(78,205,196,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .title-decoration::after {
+    content: '';
+    position: absolute;
+    top: 40px; left: 40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+  }
+
+  .divider-slide { justify-content: center; align-items: center; text-align: center; }
+  .divider-slide h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
+  .divider-line { width: 60px; height: 2px; background: var(--gradient-1); margin: 0 auto 1.5rem; }
+
+  .takeaway-box {
+    background: linear-gradient(135deg, rgba(78,205,196,0.08) 0%, rgba(91,155,213,0.08) 100%);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2.5rem;
+    max-width: 50em;
+    opacity: 0;
+  }
+
+  .takeaway-box p {
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    color: var(--text);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* Swap table for sensitivity analysis */
+  .swap-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+    margin-top: 0.5rem;
+  }
+
+  .swap-table th {
+    text-align: left;
+    padding: 0.4rem 0.6rem;
+    font-weight: 600;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .swap-table td {
+    padding: 0.3rem 0.6rem;
+    border-bottom: 1px solid rgba(78, 205, 196, 0.06);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.76rem;
+  }
+
+  .swap-table .dropped { color: var(--accent-warm); }
+  .swap-table .entered { color: var(--accent); }
+  .swap-table .ev-score { color: var(--accent-gold); font-size: 0.72rem; }
+
+  /* Module candidate table */
+  .module-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+
+  .module-table th {
+    text-align: left;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .module-table td {
+    padding: 0.4rem 0.8rem;
+    border-bottom: 1px solid rgba(78, 205, 196, 0.06);
+    color: var(--text-dim);
+  }
+
+  .module-table .gene {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--accent-gold);
+    font-weight: 500;
+    font-size: 0.8rem;
+  }
+
+  .module-badge {
+    display: inline-block;
+    padding: 0.1rem 0.45rem;
+    border-radius: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+
+  .mod-824 { background: rgba(91, 155, 213, 0.15); color: var(--accent-blue); }
+  .mod-949 { background: rgba(78, 205, 196, 0.15); color: var(--accent); }
+
+  .connectivity-bar {
+    display: inline-block;
+    height: 5px;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-right: 0.4rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="deck" id="deck">
+
+  <!-- SLIDE 1: Title -->
+  <div class="slide title-slide active">
+    <div class="title-decoration"></div>
+    <div class="section-label animate-in" style="opacity:0">Karolinska Institutet · Dep. of Clinical Neuroscience &amp; Dep. of Neurobiology, Care Sciences and Society</div>
+    <h1 class="animate-in" style="opacity:0">CSF Autophagy &amp; Lysosome<br>Biomarker Panel Discovery</h1>
+    <p class="title-meta animate-in" style="opacity:0">Pontus Plavén-Sigray</p>
+    <p class="title-meta animate-in" style="opacity:0; margin-top:0.3rem;">Translational pipeline · 12 datasets · ~3,600 samples · Mouse ↔ Human</p>
+  </div>
+
+  <!-- SLIDE 2: Question -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">The question</div>
+    <h2 class="animate-in" style="opacity:0">Which autophagy/lysosomal proteins can we <span class="hl">reliably measure in CSF</span> across both species?</h2>
+    <p class="lead animate-in" style="opacity:0">We need candidates that are <strong>robustly detected</strong> in human and mouse CSF, <strong>biologically relevant</strong> to autophagy/lysosomal pathways, and <strong>actually measurable</strong> with targeted assays.</p>
+  </div>
+
+  <!-- SLIDE 3: Pipeline overview -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Methods</div>
+    <h2 class="animate-in" style="opacity:0">Pipeline architecture</h2>
+    <div class="pipeline" style="flex-wrap:nowrap;justify-content:center;">
+      <div class="pipe-step animate-in" style="opacity:0"><span class="step-num">01</span><span class="step-name">Extract &amp; QC</span></div>
+      <span class="pipe-arrow animate-in" style="opacity:0">→</span>
+      <div class="pipe-step animate-in" style="opacity:0"><span class="step-num">02</span><span class="step-name">Orthology mapping</span></div>
+      <span class="pipe-arrow animate-in" style="opacity:0">→</span>
+      <div class="pipe-step animate-in" style="opacity:0"><span class="step-num">03</span><span class="step-name">Evidence scoring</span></div>
+      <span class="pipe-arrow animate-in" style="opacity:0">→</span>
+      <div class="pipe-step animate-in" style="opacity:0"><span class="step-num">04</span><span class="step-name">Autophagy filter</span></div>
+    </div>
+    <div class="pipeline" style="flex-wrap:nowrap;justify-content:center;margin-top:0.6rem;">
+      <div class="pipe-step animate-in" style="opacity:0;animation-delay:0.55s !important;"><span class="step-num">05</span><span class="step-name">Peptide feasibility</span></div>
+      <span class="pipe-arrow animate-in" style="opacity:0;animation-delay:0.6s !important;">→</span>
+      <div class="pipe-step animate-in" style="opacity:0;animation-delay:0.65s !important;"><span class="step-num">06</span><span class="step-name">Module validation</span></div>
+      <span class="pipe-arrow animate-in" style="opacity:0;animation-delay:0.7s !important;">→</span>
+      <div class="pipe-step animate-in" style="opacity:0;animation-delay:0.75s !important;"><span class="step-num">07</span><span class="step-name">Sensitivity</span></div>
+    </div>
+    <p class="lead animate-in" style="opacity:0; margin-top:1.5rem;">Weighted evidence scoring replaces binary intersection. EV data contributes a <span class="hl">small scoring bonus (5%)</span> but is never required for inclusion. All parameters configurable; sensitivity tested across multiple configurations.</p>
+  </div>
+
+  <!-- SLIDE 4: Data -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Methods</div>
+    <h2 class="animate-in" style="opacity:0">Input data</h2>
+    <div class="two-col">
+      <div class="card animate-in" style="opacity:0">
+        <h3>🐭 Mouse (9 datasets)</h3>
+        <ul>
+          <li><strong>7 CSF datasets</strong> — D1–D5, D7, D8 (789–5,961 proteins)</li>
+          <li><strong>1 brain lysate</strong> — D6 (7,645 proteins; plausibility layer)</li>
+          <li><strong>1 ISF</strong> — D9 (789 proteins; orthogonal support)</li>
+        </ul>
+      </div>
+      <div class="card animate-in" style="opacity:0">
+        <h3>🧬 Human (3 datasets + references)</h3>
+        <ul>
+          <li><strong>D11 Astral</strong> — 3,232 proteins × 2,720 samples (primary)</li>
+          <li><strong>D12</strong> — replication subset of D11 (validation only)</li>
+          <li><strong>D10</strong> — 990 proteins, independent cohort</li>
+          <li><strong>R1</strong> — 604 curated autophagy/lysosome genes</li>
+        </ul>
+      </div>
+    </div>
+    <p class="animate-in" style="opacity:0; margin-top:1.2rem; color: var(--text-dim); font-size:0.9rem;">EV dataset (SH-SY5Y cell line) contributes a small scoring bonus (5% weight) but is never required for panel inclusion.</p>
+  </div>
+
+  <!-- SLIDE 5: QC -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Methods</div>
+    <h2 class="animate-in" style="opacity:0">Quality control</h2>
+    <div class="three-col">
+      <div class="card animate-in" style="opacity:0">
+        <h3>Sample filtering</h3>
+        <p>Excluded samples with &gt;80% missing data. Removed lab artefacts (MaxQuant decoys &amp; contaminants).</p>
+      </div>
+      <div class="card animate-in" style="opacity:0">
+        <h3>Blood contamination</h3>
+        <p><span class="hl-warm">235 proteins flagged</span> as likely plasma-derived (albumin, Ig, complement, keratins). Excluded from core panel.</p>
+      </div>
+      <div class="card animate-in" style="opacity:0">
+        <h3>Detectability tiers</h3>
+        <p>Dataset-aware confidence grading:<br>
+        <span class="tier tier-a">TIER A</span> robust &nbsp;
+        <span class="tier tier-b">TIER B</span> moderate<br>
+        Thresholds scale with dataset size (n=8 → n=2,720).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: Orthology mapping -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Methods</div>
+    <h2 class="animate-in" style="opacity:0">Orthology mapping — mouse → human</h2>
+    <div class="two-col">
+      <div>
+        <p class="lead animate-in" style="opacity:0">All mouse gene symbols (D1–D9) mapped to human equivalents via g:Profiler (Ensembl gene trees), so we can compare across species in a single namespace.</p>
+        <div class="stat-row" style="margin-top:1.2rem; flex-direction:column; gap:0.8rem;">
+          <div class="stat animate-in" style="opacity:0; width:100%;">
+            <div class="number" style="color:var(--accent)">89%</div>
+            <div class="label">Clean 1:1 mappings (8,589 genes) — one mouse gene → one human gene</div>
+          </div>
+          <div class="stat animate-in" style="opacity:0; width:100%;">
+            <div class="number" style="color:var(--accent-gold)">5%</div>
+            <div class="label">Ambiguous 1:many (477 genes) — flagged, kept, penalised −0.1 in scoring</div>
+          </div>
+          <div class="stat animate-in" style="opacity:0; width:100%;">
+            <div class="number" style="color:var(--text-dim)">6%</div>
+            <div class="label">No human ortholog found (~604 genes) — dropped from analysis</div>
+          </div>
+        </div>
+      </div>
+      <div class="card animate-in" style="opacity:0">
+        <h3>Paralog families</h3>
+        <p>~30 core autophagy genes had non-trivial mappings due to paralog families (e.g. LC3/GABARAP, ATG4 variants). These were identified upfront by mapping R1 separately and handled explicitly.</p>
+        <p style="margin-top:0.8rem; font-size:0.85rem; color:var(--text-dim);">Ambiguous cases use an <strong>expand</strong> policy: all possible human matches kept but flagged — nothing silently lost.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Scoring -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Methods</div>
+    <h2 class="animate-in" style="opacity:0">Evidence scoring</h2>
+    <div class="two-col">
+      <div class="animate-in" style="opacity:0">
+        <p class="lead">Each protein scored 0–1 from five weighted components. No single source determines inclusion.</p>
+        <div style="margin-top:1.5rem;">
+          <div style="display:flex; align-items:center; gap:0.8rem; margin:0.6rem 0;">
+            <div style="width:110px; text-align:right; font-size:0.85rem; color:var(--text-dim);">Human CSF</div>
+            <div style="flex:1; height:10px; border-radius:5px; background:var(--surface); overflow:hidden;">
+              <div style="width:30%; height:100%; background:var(--accent); border-radius:5px;"></div>
+            </div>
+            <div style="width:30px; font-family:'IBM Plex Mono'; font-size:0.8rem; color:var(--accent);">30%</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.8rem; margin:0.6rem 0;">
+            <div style="width:110px; text-align:right; font-size:0.85rem; color:var(--text-dim);">Mouse CSF</div>
+            <div style="flex:1; height:10px; border-radius:5px; background:var(--surface); overflow:hidden;">
+              <div style="width:25%; height:100%; background:var(--accent-blue); border-radius:5px;"></div>
+            </div>
+            <div style="width:30px; font-family:'IBM Plex Mono'; font-size:0.8rem; color:var(--accent-blue);">25%</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.8rem; margin:0.6rem 0;">
+            <div style="width:110px; text-align:right; font-size:0.85rem; color:var(--text-dim);">Autophagy R1</div>
+            <div style="flex:1; height:10px; border-radius:5px; background:var(--surface); overflow:hidden;">
+              <div style="width:25%; height:100%; background:var(--accent-gold); border-radius:5px;"></div>
+            </div>
+            <div style="width:30px; font-family:'IBM Plex Mono'; font-size:0.8rem; color:var(--accent-gold);">25%</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.8rem; margin:0.6rem 0;">
+            <div style="width:110px; text-align:right; font-size:0.85rem; color:var(--text-dim);">Brain (D6)</div>
+            <div style="flex:1; height:10px; border-radius:5px; background:var(--surface); overflow:hidden;">
+              <div style="width:10%; height:100%; background:var(--text-dim); border-radius:5px;"></div>
+            </div>
+            <div style="width:30px; font-family:'IBM Plex Mono'; font-size:0.8rem; color:var(--text-dim);">10%</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.8rem; margin:0.6rem 0;">
+            <div style="width:110px; text-align:right; font-size:0.85rem; color:var(--text-dim);">EV support</div>
+            <div style="flex:1; height:10px; border-radius:5px; background:var(--surface); overflow:hidden;">
+              <div style="width:5%; height:100%; background:rgba(139,149,173,0.4); border-radius:5px;"></div>
+            </div>
+            <div style="width:30px; font-family:'IBM Plex Mono'; font-size:0.8rem; color:var(--text-dim);">5%</div>
+          </div>
+        </div>
+      </div>
+      <div class="card animate-in" style="opacity:0">
+        <h3>Core panel criteria (hard filters)</h3>
+        <ul>
+          <li>Tier A/B in <strong>human CSF</strong> (D11)</li>
+          <li>Tier A/B in <strong>≥1 mouse CSF</strong> dataset</li>
+          <li>On the <strong>autophagy/lysosome list</strong> (R1)</li>
+          <li><strong>Not</strong> flagged as plasma-derived</li>
+        </ul>
+        <p style="margin-top:0.8rem; font-size:0.85rem;">EV detection is <span class="hl">never required</span> for inclusion. It contributes a small scoring bonus only.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Divider -->
+  <div class="slide divider-slide">
+    <div class="divider-line animate-in" style="opacity:0"></div>
+    <h2 class="animate-in" style="opacity:0">Results</h2>
+  </div>
+
+  <!-- SLIDE 8: Funnel -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Results</div>
+    <h2 class="animate-in" style="opacity:0">From proteome to panel</h2>
+    <div class="stat-row">
+      <div class="stat animate-in" style="opacity:0">
+        <div class="number" style="color:var(--text-dim)">9,561</div>
+        <div class="label">unique proteins scored</div>
+      </div>
+      <div class="stat animate-in" style="opacity:0">
+        <div class="number" style="color:var(--accent-blue)">6,684</div>
+        <div class="label">detected in ≥1 mouse CSF</div>
+      </div>
+      <div class="stat animate-in" style="opacity:0">
+        <div class="number" style="color:var(--accent-gold)">3,026</div>
+        <div class="label">Tier A/B in human Astral</div>
+      </div>
+      <div class="stat animate-in" style="opacity:0">
+        <div class="number" style="color:var(--accent-warm)">434</div>
+        <div class="label">overlap with R1 autophagy list</div>
+      </div>
+      <div class="stat animate-in" style="opacity:0">
+        <div class="number" style="color:var(--accent)">122</div>
+        <div class="label">pass all 4 core criteria</div>
+      </div>
+      <div class="stat animate-in" style="opacity:0">
+        <div class="number" style="background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">80</div>
+        <div class="label">final shortlist (by score)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: Top 20 hits -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Results</div>
+    <h2 class="animate-in" style="opacity:0">Top 20 candidates</h2>
+    <div class="two-col animate-in" style="opacity:0">
+      <table class="mini-table">
+        <thead><tr><th>#</th><th>Protein</th><th>Score</th><th></th><th>Feas.</th><th>Mouse</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="protein-name">CTSD</td><td>0.975</td><td><span class="score-bar" style="width:97.5%"></span></td><td><span class="tier tier-i">I</span></td><td>7/7</td></tr>
+          <tr><td>2</td><td class="protein-name">CTSB</td><td>0.927</td><td><span class="score-bar" style="width:92.7%"></span></td><td><span class="tier tier-ii">II</span></td><td>7/7</td></tr>
+          <tr><td>3</td><td class="protein-name">CST3</td><td>0.927</td><td><span class="score-bar" style="width:92.7%"></span></td><td><span class="tier tier-ii">II</span></td><td>7/7</td></tr>
+          <tr><td>4</td><td class="protein-name">CPQ</td><td>0.926</td><td><span class="score-bar" style="width:92.6%"></span></td><td><span class="tier tier-i">I</span></td><td>7/7</td></tr>
+          <tr><td>5</td><td class="protein-name">PRDX6</td><td>0.926</td><td><span class="score-bar" style="width:92.6%"></span></td><td><span class="tier tier-ii">II</span></td><td>7/7</td></tr>
+          <tr><td>6</td><td class="protein-name">PARK7</td><td>0.925</td><td><span class="score-bar" style="width:92.5%"></span></td><td><span class="tier tier-i">I</span></td><td>7/7</td></tr>
+          <tr><td>7</td><td class="protein-name">HEXB</td><td>0.922</td><td><span class="score-bar" style="width:92.2%"></span></td><td><span class="tier tier-i">I</span></td><td>7/7</td></tr>
+          <tr><td>8</td><td class="protein-name">GGH</td><td>0.909</td><td><span class="score-bar" style="width:90.9%"></span></td><td><span class="tier tier-ii">II</span></td><td>7/7</td></tr>
+          <tr><td>9</td><td class="protein-name">GAA</td><td>0.902</td><td><span class="score-bar" style="width:90.2%"></span></td><td><span class="tier tier-i">I</span></td><td>7/7</td></tr>
+          <tr><td>10</td><td class="protein-name">LAMP1</td><td>0.896</td><td><span class="score-bar" style="width:89.6%"></span></td><td><span class="tier tier-i">I</span></td><td>7/7</td></tr>
+        </tbody>
+      </table>
+      <table class="mini-table">
+        <thead><tr><th>#</th><th>Protein</th><th>Score</th><th></th><th>Feas.</th><th>Mouse</th></tr></thead>
+        <tbody>
+          <tr><td>11</td><td class="protein-name">ATP6AP1</td><td>0.887</td><td><span class="score-bar" style="width:88.7%"></span></td><td><span class="tier tier-i">I</span></td><td>7/7</td></tr>
+          <tr><td>12</td><td class="protein-name">NPC2</td><td>0.884</td><td><span class="score-bar" style="width:88.4%"></span></td><td><span class="tier tier-i">I</span></td><td>7/7</td></tr>
+          <tr><td>13</td><td class="protein-name">GM2A</td><td>0.884</td><td><span class="score-bar" style="width:88.4%"></span></td><td><span class="tier tier-i">I</span></td><td>7/7</td></tr>
+          <tr><td>14</td><td class="protein-name">EPDR1</td><td>0.874</td><td><span class="score-bar" style="width:87.4%"></span></td><td><span class="tier tier-i">I</span></td><td>7/7</td></tr>
+          <tr><td>15</td><td class="protein-name">IDS</td><td>0.873</td><td><span class="score-bar" style="width:87.3%"></span></td><td><span class="tier tier-i">I</span></td><td>7/7</td></tr>
+          <tr><td>16</td><td class="protein-name">CTSS</td><td>0.872</td><td><span class="score-bar" style="width:87.2%"></span></td><td><span class="tier tier-i">I</span></td><td>7/7</td></tr>
+          <tr><td>17</td><td class="protein-name">CTSZ</td><td>0.870</td><td><span class="score-bar" style="width:87.0%"></span></td><td><span class="tier tier-i">I</span></td><td>7/7</td></tr>
+          <tr><td>18</td><td class="protein-name">PPT1</td><td>0.869</td><td><span class="score-bar" style="width:86.9%"></span></td><td><span class="tier tier-i">I</span></td><td>6/7</td></tr>
+          <tr><td>19</td><td class="protein-name">MAN2B1</td><td>0.869</td><td><span class="score-bar" style="width:86.9%"></span></td><td><span class="tier tier-i">I</span></td><td>7/7</td></tr>
+          <tr><td>20</td><td class="protein-name">HEXA</td><td>0.865</td><td><span class="score-bar" style="width:86.5%"></span></td><td><span class="tier tier-i">I</span></td><td>7/7</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="animate-in" style="opacity:0; margin-top:0.8rem; font-size:0.85rem; color:var(--text-dim);">Feas. = peptide feasibility tier for MS (I = ≥2 conserved proteotypic peptides mouse↔human; II = human-only). Mouse = datasets detected in (of 7). All 20 in all 7 mouse CSF datasets except PPT1 (6/7). Dominated by lysosomal enzymes and autophagy effectors.</p>
+  </div>
+
+  <!-- SLIDE 10: Detection robustness -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Results</div>
+    <h2 class="animate-in" style="opacity:0">Detection robustness <span style="font-family:'IBM Plex Sans';font-weight:300;font-size:0.6em;color:var(--text-dim);">(of 80 shortlisted)</span></h2>
+    <div class="stat-row">
+      <div class="stat animate-in" style="opacity:0">
+        <div class="number" style="color:var(--accent)">79</div>
+        <div class="label">Tier A in human Astral (D11)</div>
+      </div>
+      <div class="stat animate-in" style="opacity:0">
+        <div class="number" style="color:var(--accent-blue)">78</div>
+        <div class="label">confirmed in replication (D12)</div>
+      </div>
+      <div class="stat animate-in" style="opacity:0">
+        <div class="number" style="color:var(--accent-gold)">78</div>
+        <div class="label">detected in mouse brain (D6)</div>
+      </div>
+      <div class="stat animate-in" style="opacity:0">
+        <div class="number" style="color:var(--text-dim)">28</div>
+        <div class="label">found in all 7 mouse CSF sets</div>
+      </div>
+    </div>
+    <p class="lead animate-in" style="opacity:0; margin-top:1.5rem;">Nearly all candidates are independently replicated, brain-expressed, and cross-species detected.</p>
+  </div>
+
+  <!-- SLIDE 11: Peptide feasibility -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Results</div>
+    <h2 class="animate-in" style="opacity:0">Peptide feasibility — can we measure these?</h2>
+    <div class="two-col">
+      <div>
+        <div class="stat-row" style="flex-direction:column; gap:1rem;">
+          <div class="stat animate-in" style="opacity:0; width:100%;">
+            <div class="number" style="color:var(--accent)">99 <span style="font-size:0.4em; color:var(--text-dim); font-family:'IBM Plex Sans';">of 122</span></div>
+            <div class="label"><span class="tier tier-i">TIER I</span> &nbsp;≥2 conserved proteotypic peptides (mouse ↔ human)</div>
+          </div>
+          <div class="stat animate-in" style="opacity:0; width:100%;">
+            <div class="number" style="color:var(--accent-gold)">23</div>
+            <div class="label"><span class="tier tier-ii">TIER II</span> &nbsp;Human peptides available; separate mouse assay needed</div>
+          </div>
+          <div class="stat animate-in" style="opacity:0; width:100%;">
+            <div class="number" style="color:var(--text-dim)">0</div>
+            <div class="label">Tier III (not measurable)</div>
+          </div>
+        </div>
+      </div>
+      <div class="card animate-in" style="opacity:0">
+        <h3>What this means</h3>
+        <p>Tier I proteins can be quantified with a <strong>single PRM/MRM assay</strong> using identical peptides in both species — directly bridging preclinical and clinical studies.</p>
+        <p style="margin-top:0.8rem;">For antibody-based platforms (Olink, ELISA, suspension bead arrays), different feasibility criteria apply — antibody availability and epitope specificity rather than peptide conservation.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: Module validation -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Results</div>
+    <h2 class="animate-in" style="opacity:0">Co-abundance modules — does the panel reflect real biology?</h2>
+    <div class="two-col">
+      <div>
+        <p class="lead animate-in" style="opacity:0">Clustered <strong>all 2,323 proteins</strong> in the Astral dataset by CSF co-variation across 2,720 individuals — independent of any curated list.</p>
+        <div class="stat-row" style="margin-top:1.2rem;">
+          <div class="stat animate-in" style="opacity:0">
+            <div class="number" style="color:var(--accent)">2</div>
+            <div class="label">modules enriched for<br>autophagy genes (FDR &lt; 0.05)</div>
+          </div>
+          <div class="stat animate-in" style="opacity:0">
+            <div class="number" style="color:var(--accent-blue)">21</div>
+            <div class="label">of 80 shortlisted proteins<br>in enriched modules</div>
+          </div>
+        </div>
+      </div>
+      <div class="card animate-in" style="opacity:0">
+        <h3>Key finding</h3>
+        <p>~¼ of the panel doesn't just carry an autophagy label — these proteins <strong>co-vary together in CSF</strong>, suggesting coherent pathway-level biology.</p>
+        <p style="margin-top:0.6rem;">Additionally, <span class="hl-gold">9 hub proteins</span> in enriched modules were <strong>not</strong> on R1 — data-driven candidates that emerged from co-expression, not curation.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 14: AD model cross-check -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Results</div>
+    <h2 class="animate-in" style="opacity:0">AD model cross-check — App knock-in mice</h2>
+    <div class="two-col">
+      <div>
+        <p class="lead animate-in" style="opacity:0">Cross-referenced the panel against CSF proteomics from <strong>App<sup>NL-G-F</sup></strong> and <strong>App<sup>NL-F</sup></strong> knock-in mice vs wild-type (3 pairwise comparisons, ~260 proteins each).</p>
+        <div class="stat-row" style="margin-top:1rem;">
+          <div class="stat animate-in" style="opacity:0">
+            <div class="number" style="color:var(--accent)">17</div>
+            <div class="label">of 80 shortlisted proteins<br>present in AD model data</div>
+          </div>
+          <div class="stat animate-in" style="opacity:0">
+            <div class="number" style="color:var(--accent-warm)">9</div>
+            <div class="label">significantly altered<br>in ≥1 comparison (p &lt; 0.05)</div>
+          </div>
+        </div>
+        <p class="animate-in" style="opacity:0; margin-top:1rem; font-size:0.88rem; color:var(--text-dim);">Dominant pattern: <strong>lysosomal enzymes are decreased</strong> in CSF of amyloid models — consistent with impaired lysosomal secretion in AD.</p>
+      </div>
+      <div class="animate-in" style="opacity:0; overflow-x:auto;">
+        <table class="mini-table">
+          <thead><tr><th>Gene</th><th>Rank</th><th>Direction</th><th>p-value</th><th>Comparison</th></tr></thead>
+          <tbody>
+            <tr><td class="protein-name">CTSB</td><td>2</td><td style="color:var(--accent-warm)">↓ ↓</td><td>0.017 / 0.002</td><td>NL-F, NL-F vs NL-GF</td></tr>
+            <tr><td class="protein-name">CPQ</td><td>5</td><td style="color:var(--accent-warm)">↓</td><td>0.003</td><td>NL-F vs WT</td></tr>
+            <tr><td class="protein-name">HEXB</td><td>6</td><td style="color:var(--accent-warm)">↓</td><td>0.028</td><td>NL-F vs WT</td></tr>
+            <tr><td class="protein-name">CTSZ</td><td>17</td><td style="color:var(--accent-warm)">↓ ↓</td><td>0.025 / 0.012</td><td>NL-F, NL-F vs NL-GF</td></tr>
+            <tr><td class="protein-name">MAN2B1</td><td>15</td><td style="color:var(--accent-warm)">↓</td><td>0.046</td><td>NL-F vs WT</td></tr>
+            <tr><td class="protein-name">CTSA</td><td>20</td><td style="color:var(--accent-warm)">↓</td><td>0.014</td><td>NL-F vs NL-GF</td></tr>
+            <tr><td class="protein-name">CTSS</td><td>24</td><td style="color:var(--accent-warm)">↓</td><td>0.009</td><td>NL-F vs NL-GF</td></tr>
+            <tr><td class="protein-name">CTSD</td><td>1</td><td style="color:var(--accent-warm)">↓</td><td>0.017</td><td>NL-F vs NL-GF</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:0.5rem; font-size:0.78rem; color:var(--text-dim);">↓ = significantly decreased in disease model. CTSB shows inconsistent direction across comparisons (up in NL-GF vs WT).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 15: EV sensitivity analysis -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Sensitivity analysis</div>
+    <h2 class="animate-in" style="opacity:0">How much does EV evidence matter?</h2>
+    <div class="two-col">
+      <div class="card animate-in" style="opacity:0">
+        <h3>Test 1: Up-weight EV to 25%</h3>
+        <p><span class="hl">72 / 80</span> proteins unchanged. ρ = 0.88. Top 10 stable.</p>
+        <p style="margin-top:0.5rem;">8 lysosomal enzymes with low EV secretion swap out for 8 vesicle trafficking proteins (VPS35, DNM1L, RAB11B, ATP6V1E1) — biologically expected in EVs.</p>
+      </div>
+      <div class="card animate-in" style="opacity:0">
+        <h3>Test 2: Hard EV gate</h3>
+        <p>Require EV detection → 122 drops to <span class="hl-warm">102</span> candidates. Top 80 loses <strong>6 proteins</strong>.</p>
+        <p style="margin-top:0.5rem;">Three of those 6 — <span style="font-family:'IBM Plex Mono';font-size:0.85rem;">CPQ, CTSS, CTSZ</span> — are significantly altered in the AD mouse model. The gate trades disease-validated hits for marginal EV-positive candidates.</p>
+      </div>
+    </div>
+    <div class="takeaway-box animate-in" style="opacity:0; margin-top:1.5rem; padding:1.5rem;">
+      <p style="font-size:1rem;">Lysosomal enzymes reach CSF via <strong>direct secretion</strong>, not EV packaging. An EV gate creates a blind spot for exactly the biology we care about. Low EV weight (5–10%) is the right call.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 14: Parameter robustness -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Sensitivity analysis</div>
+    <h2 class="animate-in" style="opacity:0">Stability across all parameter choices</h2>
+    <div class="two-col">
+      <div>
+        <p class="lead animate-in" style="opacity:0">Pipeline tested under <strong>9 configurations</strong> varying tier stringency and scoring weights (plus the EV-heavy reweighting above).</p>
+        <div class="stat-row" style="margin-top:1.2rem; flex-direction:column; gap:1rem;">
+          <div class="stat animate-in" style="opacity:0; width:100%;">
+            <div class="number" style="color:var(--accent)">0.89</div>
+            <div class="label">Mean Spearman rank correlation across configs (range 0.79–0.98)</div>
+          </div>
+          <div class="stat animate-in" style="opacity:0; width:100%;">
+            <div class="number" style="color:var(--accent-gold)">65 / 80</div>
+            <div class="label">Mean candidates retained across all configurations</div>
+          </div>
+        </div>
+      </div>
+      <div class="card animate-in" style="opacity:0">
+        <h3>Always in the top</h3>
+        <p>These proteins survived <strong>every configuration</strong>:</p>
+        <p style="margin-top:0.5rem; font-family:'IBM Plex Mono'; font-size:0.95rem; color:var(--accent); line-height:2;">
+          CTSD · CTSB · CST3 · CPQ<br>PARK7 · HEXB · GAA · LAMP1
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 15: Summary -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Summary</div>
+    <h2 class="animate-in" style="opacity:0">What we have</h2>
+    <div class="takeaway-box animate-in" style="opacity:0">
+      <p>An <span class="hl">80-protein CSF autophagy/lysosomal panel</span> that is robustly detected across both mouse and human, biologically coherent by independent co-expression analysis, stable across analytical choices, and directly amenable to <span class="hl">translational targeted assay development</span> — with the majority of candidates measurable using shared peptide sequences across species.</p>
+    </div>
+    <div class="stat-row" style="margin-top:2rem;">
+      <div class="stat animate-in" style="opacity:0">
+        <div class="number" style="color:var(--accent)">80</div>
+        <div class="label">panel proteins</div>
+      </div>
+      <div class="stat animate-in" style="opacity:0">
+        <div class="number" style="color:var(--accent-blue)">65</div>
+        <div class="label">Tier I assay-ready<br>(shared peptides)</div>
+      </div>
+      <div class="stat animate-in" style="opacity:0">
+        <div class="number" style="color:var(--accent-gold)">21</div>
+        <div class="label">module-validated<br>(co-expression support)</div>
+      </div>
+      <div class="stat animate-in" style="opacity:0">
+        <div class="number" style="color:var(--accent-warm)">9</div>
+        <div class="label">novel module-derived<br>candidates</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 16: Module-derived candidates (NEW) -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Novel candidates</div>
+    <h2 class="animate-in" style="opacity:0">Module-derived candidates — data over curation</h2>
+    <div class="two-col">
+      <div>
+        <p class="lead animate-in" style="opacity:0">Co-abundance analysis clustered <strong>all</strong> Astral proteins — not just those on the autophagy list. Two modules were enriched for R1 genes. Within those modules, <span class="hl-gold">9 hub proteins</span> were <strong>not</strong> on R1 but co-vary tightly with known autophagy/lysosomal markers.</p>
+        <p class="animate-in" style="opacity:0; margin-top:1rem; font-size:0.9rem; color:var(--text-dim);">These are <strong>data-driven hypotheses</strong>: proteins the co-expression network says behave like autophagy markers in CSF, despite not being on any curated list. They did not go through the autophagy filter — they emerged independently.</p>
+      </div>
+      <div class="animate-in" style="opacity:0">
+        <table class="module-table">
+          <thead><tr><th>Gene</th><th>Module</th><th>Connectivity</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="gene">SELENBP1</td>
+              <td><span class="module-badge mod-824">824</span></td>
+              <td><span class="connectivity-bar" style="width:54%; background:var(--accent-blue);"></span> 0.54</td>
+            </tr>
+            <tr>
+              <td class="gene">LGALS3BP</td>
+              <td><span class="module-badge mod-824">824</span></td>
+              <td><span class="connectivity-bar" style="width:53%; background:var(--accent-blue);"></span> 0.53</td>
+            </tr>
+            <tr>
+              <td class="gene">ADGRL1</td>
+              <td><span class="module-badge mod-824">824</span></td>
+              <td><span class="connectivity-bar" style="width:53%; background:var(--accent-blue);"></span> 0.53</td>
+            </tr>
+            <tr>
+              <td class="gene">GOT1</td>
+              <td><span class="module-badge mod-824">824</span></td>
+              <td><span class="connectivity-bar" style="width:52%; background:var(--accent-blue);"></span> 0.52</td>
+            </tr>
+            <tr>
+              <td class="gene">AEBP1</td>
+              <td><span class="module-badge mod-949">949</span></td>
+              <td><span class="connectivity-bar" style="width:51%; background:var(--accent);"></span> 0.51</td>
+            </tr>
+            <tr>
+              <td class="gene">DCN</td>
+              <td><span class="module-badge mod-949">949</span></td>
+              <td><span class="connectivity-bar" style="width:51%; background:var(--accent);"></span> 0.51</td>
+            </tr>
+            <tr>
+              <td class="gene">F5</td>
+              <td><span class="module-badge mod-949">949</span></td>
+              <td><span class="connectivity-bar" style="width:50%; background:var(--accent);"></span> 0.50</td>
+            </tr>
+            <tr>
+              <td class="gene">COL14A1</td>
+              <td><span class="module-badge mod-949">949</span></td>
+              <td><span class="connectivity-bar" style="width:47%; background:var(--accent);"></span> 0.47</td>
+            </tr>
+            <tr>
+              <td class="gene">CPVL</td>
+              <td><span class="module-badge mod-949">949</span></td>
+              <td><span class="connectivity-bar" style="width:47%; background:var(--accent);"></span> 0.47</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 17: Next steps -->
+  <div class="slide">
+    <div class="section-label animate-in" style="opacity:0">Next steps</div>
+    <h2 class="animate-in" style="opacity:0">Where do we go from here?</h2>
+    <div class="three-col">
+      <div class="card animate-in" style="opacity:0">
+        <h3>🔬 Assay development</h3>
+        <p>PRM/MRM assays for top Tier I candidates using conserved peptides. Alternatively, assess antibody availability for Olink, ELISA, or suspension bead array assays. Validate in independent CSF cohorts.</p>
+      </div>
+      <div class="card animate-in" style="opacity:0">
+        <h3>💊 ERAP integration</h3>
+        <p>Measure panel in rapamycin-treated CSF samples. Test whether mTOR inhibition produces detectable shifts in autophagy/lysosomal protein panel.</p>
+      </div>
+      <div class="card animate-in" style="opacity:0">
+        <h3>🧪 Novel candidates</h3>
+        <p>Follow up the 9 module-derived proteins. Characterise their relationship to autophagy/lysosomal biology and assess assay feasibility.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button onclick="prev()" aria-label="Previous slide">←</button>
+  <span class="slide-counter" id="counter">1 / 19</span>
+  <button onclick="next()" aria-label="Next slide">→</button>
+</div>
+
+<script>
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+
+  function show(i) {
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+    counter.textContent = `${i + 1} / ${total}`;
+    progress.style.width = `${((i + 1) / total) * 100}%`;
+  }
+
+  function next() { if (current < total - 1) { current++; show(current); } }
+  function prev() { if (current > 0) { current--; show(current); } }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+  });
+
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+  document.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); }
+  });
+
+  show(0);
+</script>
+
+</body>
+</html>
