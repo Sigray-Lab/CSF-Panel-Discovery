@@ -133,7 +133,7 @@ This filtering reduces 9,561 scored proteins to **122 core candidates**, ranked 
 
 ---
 
-## Top 20 Candidates
+## Top 10 Candidates
 
 | Rank | Protein | Score | Feasibility | Mouse CSF |
 |------|---------|-------|-------------|-----------|
@@ -147,18 +147,8 @@ This filtering reduces 9,561 scored proteins to **122 core candidates**, ranked 
 | 8 | GGH | 0.909 | Tier II | 7/7 |
 | 9 | GAA | 0.902 | Tier I | 7/7 |
 | 10 | LAMP1 | 0.896 | Tier I | 7/7 |
-| 11 | ATP6AP1 | 0.887 | Tier I | 7/7 |
-| 12 | NPC2 | 0.884 | Tier I | 7/7 |
-| 13 | GM2A | 0.884 | Tier I | 7/7 |
-| 14 | EPDR1 | 0.874 | Tier I | 7/7 |
-| 15 | IDS | 0.873 | Tier I | 7/7 |
-| 16 | CTSS | 0.872 | Tier I | 7/7 |
-| 17 | CTSZ | 0.870 | Tier I | 7/7 |
-| 18 | PPT1 | 0.869 | Tier I | 6/7 |
-| 19 | MAN2B1 | 0.869 | Tier I | 7/7 |
-| 20 | HEXA | 0.865 | Tier I | 7/7 |
 
-**Feasibility**: Tier I = 2+ conserved proteotypic peptides (mouse & human); Tier II = human peptides available, separate mouse assay needed. **Mouse CSF** = datasets detected in (of 7 CSF datasets). The top 20 is dominated by lysosomal enzymes and autophagy effectors, with 19/20 detected in all 7 mouse CSF datasets.
+**Feasibility**: Tier I = 2+ conserved proteotypic peptides (mouse & human); Tier II = human peptides available, separate mouse assay needed. **Mouse CSF** = datasets detected in (of 7 CSF datasets). All 10 detected in all 7 mouse CSF datasets. Dominated by lysosomal enzymes and autophagy effectors.
 
 ---
 
